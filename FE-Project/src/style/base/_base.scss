@@ -1,0 +1,26 @@
+@import "../abstracts/variables";
+
+* {
+    font-family: "Noto Sans KR", sans-serif !important;
+}
+
+html,
+body,
+#root,
+#root>div {
+    height: 100%;
+    min-width: 1260px;
+}
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.main {
+    min-height: 100%;
+}
