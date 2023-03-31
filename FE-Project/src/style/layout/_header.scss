@@ -1,0 +1,21 @@
+.header_wrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header_title {
+        padding-left: 50px;
+        font-weight: 800;
+        font-size: $font-2xl;
+        color: $color-main-pink;
+    }
+
+    .header_list {
+        font-size: $font-sm;
+        padding-right: 50px;
+        display: flex;
+        gap:50px;
+    }
+}

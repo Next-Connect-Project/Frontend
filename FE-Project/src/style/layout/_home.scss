@@ -1,6 +1,121 @@
-.test {
-    font-size: 500px;
+// Carousel
+.carousel_wrapper {
+    height: 100%;
 }
-.test2{
-    font-weight: 400;
+
+// Card
+.card_wrapper {
+    background-color: $color-card-pink;
+    border-radius: 15px;
+    padding: 20px;
+    width: 370px;
+    height: 430px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .card_top {
+        display: flex;
+        justify-content: space-between;
+
+        .card_top_category_sideproject {
+            font-size: $font-xs;
+            font-weight: 600;
+            border-radius: 10px;
+            color: $color-white;
+            padding: 8px;
+            background-color: $color-card-purple;
+        }
+
+        .card_top_category_study {
+            font-size: $font-xs;
+            font-weight: 600;
+            border-radius: 10px;
+            color: $color-gray-800;
+            padding: 8px;
+            background-color: $color-card-yellow;
+        }
+
+        .card_top_detail {
+            display: flex;
+            gap: 10px;
+
+            .card_top_count {
+                display: flex;
+                gap: 3px;
+            }
+        }
+    }
+
+
+    .card_classification {
+        color: $color-gray-600;
+        font-weight: 500;
+    }
+
+    .card_name {
+        font-weight: 600;
+    }
+
+    .card_title {
+        font-weight: 600;
+        font-size: $font-sm;
+        height: 60px;
+        line-height: normal;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .card_stack {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .stack {
+            border: 1px solid;
+            border-radius: 15px;
+            padding: 4px 5px 4px 5px;
+        }
+    }
+
+}
+
+.card_wrapper:hover {
+    box-shadow: 3px 5px 10px 0px rgba(0, 0, 0, 0.35);
+    transition: 0.2s linear;
+}
+
+// Cardlist 
+.cardlist_wraaper {
+    margin: 70px 50px 70px 50px;
+
+    .announcement {
+        width: 800px;
+        height: 60px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: $font-lg;
+        font-weight: 600;
+        margin-left: 80px;
+        margin-bottom: 20px;
+
+        .fire {
+            color: $color-red-600;
+        }
+    }
+
+    .cardlists {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
 }
