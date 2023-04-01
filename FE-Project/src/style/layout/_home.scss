@@ -46,6 +46,8 @@
             .card_top_count {
                 display: flex;
                 gap: 3px;
+                font-size: $font-xs;
+                font-weight: 600;
             }
         }
     }

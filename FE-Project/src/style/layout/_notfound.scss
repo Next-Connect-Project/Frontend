@@ -1,0 +1,33 @@
+.notfound_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    height: 100vh;
+
+    .notfound {
+        display: flex;
+        width: 1000px;
+        height: 600px;
+
+        .notfound_image {
+            width: 600px;
+            height: 600px;
+        }
+
+        .notfound_message {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            font-size: $font-2xl;
+            font-weight: 600;
+
+            .notfound_gohome {
+                text-decoration: none;
+                color: $color-gray-800;
+            }
+        }
+    }
+}
