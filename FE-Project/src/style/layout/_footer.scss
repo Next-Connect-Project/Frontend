@@ -1,0 +1,62 @@
+.footer_wrapper {
+    color: $color-gray-800;
+    width: 100%;
+    height: 400px;
+    // footer 색상 추천 받습니다..
+    background-color: #FAE0D4;
+    padding: 60px 200px;
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    .footer_title {
+        font-size: $font-2xl;
+        font-weight: 600;
+    }
+
+    .footer_link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+
+        a {
+            text-decoration: none;
+            color: $color-gray-800;
+            .link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: $font-xl;
+                border: 1px solid;
+                border-radius: 100%;
+                padding: 10px;
+                background-color: $color-white;
+            }
+
+        }
+    }
+
+    .footer_desc {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-size: $font-xs;
+        font-weight: 500;
+
+        .footer_name {
+            display: flex;
+            align-items: center;
+
+            .charge {
+                padding-right: 15px;
+                font-size: $font-sm;
+                font-weight: 700;
+            }
+        }
+    }
+
+}
