@@ -1,0 +1,90 @@
+.post_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 50px 70px 50px 70px;
+
+    .post_question {
+        .post_question_number {
+            padding: 5px 13px 5px 13px;
+            border-radius: 50%;
+            color: $color-white;
+            background-color: $color-yellow-800;
+            margin-right: 10px;
+        }
+
+        .post_question_desc {
+            font-weight: 600;
+            font-size: $font-sm;
+        }
+    }
+
+    .post_form {
+        .post_select_form {
+            // height 임시
+            height:500px;
+            display: flex;
+            padding-right:300px;
+            justify-content: space-between;
+            align-items: space-between;
+            flex-wrap: wrap;
+            .select_title {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .select_form {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 5px 10px 5px 10px;
+                border: 1px solid $color-gray-400;
+                border-radius: 10px;
+                width: 600px;
+                
+                .selected_option {
+                    color: $color-gray-800;
+                    font-weight: 700;
+                }
+
+                .select_right {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .division {
+                        border-left: 1px solid $color-gray-400;
+                        margin: 0px;
+                        padding: 0px;
+                        height: 30px;
+                    }
+
+                    .picker {
+                        color: $color-gray-400;
+                    }
+                }
+            }
+
+            .select_options {
+                margin-top: 1px;
+                border: 1px solid $color-gray-400;
+                border-radius: 5px 5px 10px 10px;
+                width: 600px;
+                position: absolute;
+                z-index: 2;
+                background-color:$color-gray-200;
+                .select_option {
+                    border-top: 1px solid $color-gray-400;
+                    padding: 10px;
+                    color: $color-gray-600;
+                    font-weight: 600;
+                }
+            }
+
+            .select_option:first-child {
+                border: none;
+            }
+        }
+    }
+}
