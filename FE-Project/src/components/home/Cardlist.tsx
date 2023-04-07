@@ -18,7 +18,7 @@ export default function Cardlist() {
   }, []);
 
   return (
-    <div className="cardlist_wraaper">
+    <div className="cardlist_wrapper">
       <div className="announcement">
         <ImFire className="fire" />
         모집중인 공고
