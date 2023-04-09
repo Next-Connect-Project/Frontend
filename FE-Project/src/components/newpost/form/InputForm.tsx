@@ -10,7 +10,7 @@ export default function InputForm({data, setData, example} : InputFormProps) {
     },[data])
   return (
     <>
-      <input type="text" className="input_form" placeholder={example} required onChange={inputhandler}/>
+      <input type="text" className="input_form" placeholder={example} onChange={inputhandler}/>
     </>
   );
 }

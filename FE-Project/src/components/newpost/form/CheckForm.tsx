@@ -40,21 +40,7 @@ export default function CheckForm(props: CheckBoxProps) {
         console.log("error");
     }
   };
-    
-  useEffect(() => {
-    console.log("FrontNumber:" + props.frontNumber);
-    console.log("BackNumber:" + props.backNumber);
-    console.log("DesignNumber:" + props.designNumber);
-    console.log("PM:" + props.PMNumber);
-    console.log("FrontNumber:" + props.otherNumber);
-  }, [
-    props.PMNumber,
-    props.backNumber,
-    props.designNumber,
-    props.frontNumber,
-    props.otherNumber,
-  ]);
-    
+  
   return (
     <div className="checkbox_form">
       {props.options.map((data: CheckboxOption, index: number) => {

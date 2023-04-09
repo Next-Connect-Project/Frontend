@@ -31,12 +31,12 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
   const ClickOptions = (option: string, value:string) => {
     setShowDetailOptions(false);
     setShowOptions(false);
-    console.log(value);
     if (props.data.find((element) => element === option) === undefined) {
       props.data[0] === props.default
         ? (props.data[0] = option)
         : props.data.push(option);
       props.setData(props.data);
+      console.log(props.data);
     }
   };
   const ResetSelectOptions = (e: React.MouseEvent<HTMLButtonElement>) => {
