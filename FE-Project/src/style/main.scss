@@ -1,6 +1,8 @@
 //bootstrap SCSS import 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+//react-datepicker SCSS import
+@import "../../node_modules/react-datepicker/src/stylesheets/datepicker.scss";
 //리셋 && 베이스
 @import "./base/base.scss";
 @import "./base/reset.scss";
@@ -9,6 +11,7 @@
 //components SCSS
 @import "./layout/header.scss";
 @import "./layout/footer";
+@import "./layout/modal";
 @import "./layout/home.scss";
 @import "./layout/login";
 @import "./layout/newpost";

@@ -1,29 +1,31 @@
-import React from "react";
-import { RecruitmentProps, RecruitNumberProps } from "../Post.intefact";
-import SelectForm from "./SelectForm";
+import React,{useState} from "react";
+import { RecruitNumberProps } from "../Post.intefact";
+import CheckForm from "../form/CheckForm";
 
-export default function RecruitNumber(props:RecruitNumberProps) {
+export default function RecruitNumber(props: RecruitNumberProps) {
   const options = [
-    { value: "인원 미정" },
-    { value: "1명" },
-    { value: "2명" },
-    { value: "3명" },
-    { value: "4명" },
-    { value: "5명" },
-    { value: "6명" },
-    { value: "7명" },
-    { value: "8명" },
-    { value: "9명" },
-    { value: "10명" },
-    { value: "무제한" },
+    { value: "FrontEnd", name: "Front-End" },
+    { value: "BackEnd", name: "Back-End" },
+    { value: "Design", name: "Design" },
+    { value: "ProjectManager", name: "PM" },
+    { value: "Others", name: "기타" },
   ];
+  
   return (
     <div>
-      <div className="select_title">모집 인원</div>
-      <SelectForm
+      <div className="checkbox_title">모집 인원</div>
+      <CheckForm
         options={options}
-        data={props.recruitNumber}
-        setData={props.setRecruitNumber}
+        frontNumber={props.frontNumber}
+        setFrontNumber={props.setFrontNumber}
+        backNumber={props.backNumber}
+        setBackNumber={props.setBackNumber}
+        designNumber={props.designNumber}
+        setDesignNumber={props.setDesignNumber}
+        PMNumber={props.PMNumber}
+        setPMNumber={props.setPMNumber}
+        otherNumber={props.otherNumber}
+        setOthernumber={props.setOthernumber}
       />
     </div>
   );

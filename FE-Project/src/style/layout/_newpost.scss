@@ -9,7 +9,7 @@
             padding: 5px 13px 5px 13px;
             border-radius: 50%;
             color: $color-white;
-            background-color: $color-yellow-800;
+            background-color: $color-main-pink;
             margin-right: 10px;
         }
 
@@ -20,71 +20,227 @@
     }
 
     .post_form {
-        .post_select_form {
-            // height 임시
-            height:500px;
+        .post_basic_form {
             display: flex;
-            padding-right:300px;
+            padding-right: 300px;
             justify-content: space-between;
-            align-items: space-between;
+            gap: 50px;
             flex-wrap: wrap;
-            .select_title {
-                font-weight: 600;
-                margin-bottom: 10px;
+            margin-bottom: 70px;
+        }
+
+        .input_title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .input_form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid $color-gray-400;
+            border-radius: 10px;
+            width: 600px;
+        }
+
+        .select_form {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid $color-gray-400;
+            border-radius: 10px;
+            width: 600px;
+
+            .selected_option {
+                color: $color-gray-800;
+                font-weight: 700;
             }
 
-            .select_form {
-                cursor: pointer;
+            .select_right {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                padding: 5px 10px 5px 10px;
-                border: 1px solid $color-gray-400;
-                border-radius: 10px;
-                width: 600px;
-                
-                .selected_option {
-                    color: $color-gray-800;
-                    font-weight: 700;
+                gap: 5px;
+
+                .division {
+                    border-left: 1px solid $color-gray-400;
+                    margin: 0px;
+                    padding: 0px;
+                    height: 30px;
                 }
 
-                .select_right {
+                .reset {
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+                    justify-content: center;
+                    color: $color-gray-400;
+                }
 
-                    .division {
-                        border-left: 1px solid $color-gray-400;
-                        margin: 0px;
-                        padding: 0px;
-                        height: 30px;
-                    }
-
-                    .picker {
-                        color: $color-gray-400;
-                    }
+                .picker {
+                    color: $color-gray-400;
                 }
             }
 
-            .select_options {
-                margin-top: 1px;
-                border: 1px solid $color-gray-400;
-                border-radius: 5px 5px 10px 10px;
-                width: 600px;
-                position: absolute;
-                z-index: 2;
-                background-color:$color-gray-200;
-                .select_option {
-                    border-top: 1px solid $color-gray-400;
-                    padding: 10px;
-                    color: $color-gray-600;
-                    font-weight: 600;
-                }
-            }
+        }
 
-            .select_option:first-child {
-                border: none;
+        .select_form:focus {
+            border: 2px solid;
+            border-color: $color-blue;
+        }
+
+        .select_title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .select_options {
+            cursor: pointer;
+            margin-top: 1px;
+            border: 1px solid $color-gray-400;
+            border-radius: 5px 5px 10px 10px;
+            width: 600px;
+            position: absolute;
+            z-index: 2;
+            background-color: $color-card-pink;
+
+            .select_option {
+                border-top: 1px solid $color-gray-400;
+                padding: 10px;
+                color: $color-gray-600;
+                font-weight: 600;
             }
         }
+
+        .select_option:first-child {
+            border: none;
+        }
+
+
+        .multi_select_options {
+            cursor: pointer;
+            margin-top: 1px;
+            border: 1px solid $color-gray-400;
+            border-radius: 5px 5px 10px 10px;
+            width: 300px;
+            position: absolute;
+            z-index: 2;
+            background-color: $color-card-pink;
+
+
+            .multi_select_option {
+                border-top: 1px solid $color-gray-400;
+                padding: 10px;
+                color: $color-gray-600;
+                font-weight: 600;
+                display: flex;
+                justify-content: space-between;
+
+                .right {
+                    color: $color-gray-600;
+                    font-size: $font-xs;
+                }
+            }
+
+            .multi_select_detail_option {
+                width: 300px;
+                border: 1px solid $color-gray-400;
+                padding: 10px;
+                color: $color-gray-600;
+                font-weight: 600;
+                z-index: 1;
+                background-color: $color-card-pink;
+                position: absolute;
+                left: 300px;
+            }
+        }
+
+        .multi_select_detail_option:last-child {
+            border-radius: 0px 0px 10px 10px;
+        }
+
+        .multi_select_option:hover {
+            .right {
+                color: $color-blue;
+            }
+        }
+
+        .multi_select_option:first-child {
+            border: none;
+        }
+
+        .checkbox_title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .checkbox_form {
+            width: 600px;
+            border: 1px solid $color-gray-400;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 10px;
+
+            .option_form {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                .option_label {
+                    color: $color-gray-800;
+                    font-weight: 500;
+                    width: 100px;
+                }
+
+                .option_number_input {
+                    border: 1px solid $color-gray-400;
+                    border-radius: 10px;
+                    padding: 3px 5px 3px 5px;
+                }
+            }
+        }
+
+        .calendar_form {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid $color-gray-400;
+            border-radius: 10px;
+            width: 600px;
+        }
+
+        .select_input_form {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 10px 5px 10px;
+            border: 1px solid $color-gray-400;
+            border-radius: 10px;
+            width: 600px;
+        }
+
+        .free_form_input{
+            width:100%;
+        }
+        
     }
+    .free_form{
+        width:1570px;
+    }
+        .submit_button_wrapper {
+            margin: 70px 0px 70px 0px;
+            align-self: center;
+            width: 1000px;
+            height: 60px;
+            .submit_button{
+                width: 100%;
+                height: 100%;
+            }
+        }
 }

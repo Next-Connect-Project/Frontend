@@ -1,6 +1,6 @@
 import React from "react";
 import { RecruitmentProps } from "../Post.intefact";
-import SelectForm from "./SelectForm";
+import SelectForm from "../form/SelectForm";
 
 export default function Recruitment( props :RecruitmentProps) {
     const options = [{value: "스터디"}, {value: "프로젝트"}];

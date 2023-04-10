@@ -24,3 +24,17 @@ body {
 .main {
     min-height: 100%;
 }
+
+.react-datepicker{
+    border-radius: 15px;
+    border:2px solid $color-gray-400;
+    .react-datepicker__header{
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom: none;
+        background-color: $color-card-pink;
+    }
+    .react-datepicker__triangle{
+        display: none;
+    }
+}

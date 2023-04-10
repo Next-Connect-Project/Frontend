@@ -1,0 +1,50 @@
+{
+  "tech" : [
+    {
+      "value": "Language",
+      "detail": [
+        { "option": "Java" },
+        { "option": "Python" },
+        { "option": "C#" },
+        { "option": "JavaScript" },
+        { "option": "TypeScript" },
+        { "option": "Kotlin" },
+        { "option": "Swift" },
+        { "option": "C/C++" },
+        { "option": "Go" },
+        { "option": "Ruby" }
+      ]
+    },
+    {
+      "value": "UI/UX",
+      "detail": [
+        { "option": "Figma" },
+        { "option": "PhotoShop" },
+        { "option": "Illustrator" }
+      ]
+    },
+    {
+      "value": "FrontEnd",
+      "detail": [{ "option": "React" }, { "option": "Next.js" }]
+    },
+    {
+      "value": "BackEnd",
+      "detail": [
+        { "option": "Django" },
+        { "option": "Spring" },
+        { "option": "Node_Express" },
+        {"option": "Flask" },
+        { "option": "Ruby_on_Rails" }
+      ]
+    },
+    {
+      "value": "Mobile",
+      "detail": [{ "option": "Flutter" }, { "option": "React-Native" }]
+    },
+    {
+      "value": "Game",
+      "detail": [{ "option": "Unity" }, { "option": "Unreal_Engine" }]
+    },
+    { "value": "PM", "detail": [{ "option": "None(없음)" }] }
+  ]
+}

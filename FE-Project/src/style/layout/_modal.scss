@@ -1,0 +1,56 @@
+/* modal창 외부 */
+.modal_outside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* modal창 */
+.modal_inside {
+    position: absolute;
+
+    width: 400px;
+    height: 200px;
+    padding: 15px 20px 15px 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+
+    .modal_top {
+        height: 30px;
+        align-self: flex-end;
+
+        .modal_close_button {
+
+            border: none;
+            color: rgba(0, 0, 0, 0.7);
+            background-color: transparent;
+            font-size: 25px;
+        }
+
+        .modal_close_button:hover {
+            cursor: pointer;
+        }
+    }
+
+    .modal_bottom {
+        align-self: flex-start;
+        font-size: $font-sm;
+        height: 170px;
+        font-weight: 500;
+        margin: 0px 15px 0px 15px;
+    }
+
+
+}
