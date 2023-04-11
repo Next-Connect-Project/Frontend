@@ -10,7 +10,6 @@ export default function Cardlist() {
   const getData = async () => {
     const card = await getMainCardData();
     setList(card);
-    console.log(list);
   };
   
   useEffect(() => {

@@ -28,7 +28,9 @@
         }
 
         .header_link:hover {
+            cursor: pointer;
             background-color: $color-gray-200;
+            border: none;
         }
     }
 }
