@@ -11,10 +11,12 @@ export default function Header() {
   };
   return (
     <header className="header_wrapper">
+      <div className="header_left">
       <Link to="/" className="header_title">
         <div>NextConnect</div>
       </Link>
-      <div className="header_list">
+      </div>
+      <div className="header_right">
         <Link to="/post" className="header_link">
           <div> 새글 쓰기</div>
         </Link>
