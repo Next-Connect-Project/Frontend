@@ -3,6 +3,10 @@ import React,  { useEffect, useState }  from "react";
 import { useParams } from "react-router-dom";
 import { Detail } from "./ProjectDetail.interface"
 import { getDetailData } from "../../hooks/axios/Project";
+import FreeForm from "../newpost/form/FreeForm";
+import Introduce from "../newpost/postform/Introduce";
+import MDEditor, {commands, ICommand, TextState} from "@uiw/react-md-editor";
+
 
 export default function ProjectDetail() {
 
@@ -80,7 +84,11 @@ export default function ProjectDetail() {
                     </li>
                     </ul>
                 </section>
-                <div className="free">{element.free}</div>
+                <div className="markdownDiv" data-color-mode="light" style={{paddingTop: 30}}>
+                    <MDEditor.Markdown
+                        source={ element.free} 
+                    />
+                </div>
             </div>
             );
             }
