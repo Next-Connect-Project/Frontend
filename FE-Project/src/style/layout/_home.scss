@@ -134,6 +134,8 @@
     }
 
     .cardlists {
+        // 가로 넓이 지정해줘야함 (1줄 카드개수)
+        width: 1800px;
         display: flex;
         justify-content: center;
         gap: 30px;

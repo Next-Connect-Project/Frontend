@@ -1,5 +1,3 @@
-import { DetailOption } from "../components/newpost/Post.intefact";
-
 export const getNextMonth = () => {
   const now = new Date();
   const next_month = new Date(now);
@@ -17,8 +15,9 @@ export const ChangeMonthForm = (date:Date) => {
     return month_form;
 }
 
-
-//고른 기술스택 들을 
-// export const SortingTech = (tech: DetailOption, value: string, option: string) => {
-//     if(tech.value)
-// }
+export const SortingParameter = (params:string) => {
+  let first =params.indexOf("=", 0);
+  let last = params.indexOf("&state=");
+  let sorted = params.substring(first+1, last);
+  return sorted;
+}

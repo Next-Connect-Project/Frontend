@@ -6,3 +6,7 @@ export interface ModalProps {
 export interface LoginModalProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+interface ImportMeta{
+  readonly env: ImportMetaEnv
+}

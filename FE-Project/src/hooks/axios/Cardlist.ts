@@ -5,7 +5,7 @@ export const getMainCardData = async () => {
   return await axios
     .get(url)
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       return response.data.lists;
     })
     .catch((e) => {

@@ -49,9 +49,10 @@
         justify-content: space-between;
         align-items: center;
 
-        .modal_top_title{
+        .modal_top_title {
             font-weight: 600;
         }
+
         .modal_close_button {
             border: none;
             color: rgba(0, 0, 0, 0.7);
@@ -79,26 +80,31 @@
         height: 170px;
         font-weight: 500;
         margin: 0px 15px 0px 15px;
-        .naver_Login_wrapper {
-            display: flex;
-            align-items: center;
-            color: $color-white;
-            background-color: $color-naver-green;
-            padding: 5px 15px 5px 15px;
-            gap: 15px;
-            border: 1px solid $color-white;
-            border-radius: 5px;
 
-            .naver_logo {
-                margin: 5px;
+        .naver_login {
+            text-decoration: none;
+            .naver_Login_wrapper {
+                display: flex;
+                align-items: center;
+                color: $color-white;
+                background-color: $color-naver-green;
+                padding: 5px 15px 5px 15px;
+                gap: 15px;
+                border: 1px solid $color-white;
+                border-radius: 5px;
+
+                .naver_logo {
+                    margin: 5px;
+                }
+
+                .naver_start {
+                    font-size: $font-xs;
+                }
             }
 
-            .naver_start {
-                font-size: $font-xs;
+            .naver_Login_wrapper:hover {
+                cursor: pointer;
             }
-        }
-        .naver_Login_wrapper:hover{
-            cursor:pointer;
         }
     }
 }
