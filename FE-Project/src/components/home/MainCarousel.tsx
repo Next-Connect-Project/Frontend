@@ -12,7 +12,7 @@ export default function MainCarousel() {
         <Carousel.Item>
           <img
             className="carousel"
-            src="http://placehold.it/1800x700"
+            src="https://via.placeholder.com/1800x700"
             alt="임의의 이미지1"
           />
           <Carousel.Caption className="carouselCaption">
@@ -23,7 +23,7 @@ export default function MainCarousel() {
         <Carousel.Item>
           <img
             className="carousel"
-            src="http://placehold.it/1800x700"
+            src="https://via.placeholder.com/1800x700"
             alt="임의의 이미지2"
           />
           <Carousel.Caption className="carouselCaption">

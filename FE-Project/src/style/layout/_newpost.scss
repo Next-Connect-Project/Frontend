@@ -22,10 +22,10 @@
     .post_form {
         .post_basic_form {
             display: flex;
-            padding-right: 300px;
             justify-content: space-between;
             gap: 50px;
             flex-wrap: wrap;
+            overflow: hidden;
             margin-bottom: 70px;
         }
 
@@ -36,6 +36,8 @@
 
         .input_form {
             display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
             align-items: center;
             justify-content: space-between;
             padding: 5px 10px 5px 10px;
@@ -47,6 +49,8 @@
         .select_form {
             cursor: pointer;
             display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
             align-items: center;
             justify-content: space-between;
             padding: 5px 10px 5px 10px;
@@ -225,22 +229,20 @@
             width: 600px;
         }
 
-        .free_form_input{
-            width:100%;
+        .free_form_input {
+            width: 100%;
         }
-        
     }
-    .free_form{
-        width:1570px;
-    }
-        .submit_button_wrapper {
-            margin: 70px 0px 70px 0px;
-            align-self: center;
-            width: 1000px;
-            height: 60px;
-            .submit_button{
-                width: 100%;
-                height: 100%;
-            }
+
+    .submit_button_wrapper {
+        margin: 70px 0px 70px 0px;
+        align-self: center;
+        width: 1000px;
+        height: 60px;
+
+        .submit_button {
+            width: 100%;
+            height: 100%;
         }
+    }
 }
