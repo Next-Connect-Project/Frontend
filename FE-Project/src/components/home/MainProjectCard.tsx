@@ -5,7 +5,7 @@ import { SlBubble } from "react-icons/sl";
 import { MainCardProps } from "./Main.interface";
 import { Link } from "react-router-dom";
 
-export default function MainCard({ card }: MainCardProps) {
+export default function MainProjectCard({ card }: MainCardProps) {
   return (
     <div className="card_wrapper">
       <Link className="link" to={`/project/${card.id}`}></Link>
@@ -18,20 +18,6 @@ export default function MainCard({ card }: MainCardProps) {
             ) : (
               <div className="card_top_category_study">스터디</div>
             )}
-          </div>
-          <div className="card_top_detail">
-            <div className="card_top_count">
-              <span>
-                <GrView />
-              </span>
-              <span>{card.view}</span>
-            </div>
-            <div className="card_top_count">
-              <span>
-                <SlBubble />
-              </span>
-              <span>{card.comment}</span>
-            </div>
           </div>
         </div>
         <div className="card_classification">{card.classification}</div>
