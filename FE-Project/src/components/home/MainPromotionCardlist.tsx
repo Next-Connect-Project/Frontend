@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MainPromotionCard from "./MainPromotionCard";
+import MainPromotionCard from "../card/PromotionCard";
 import {
   AiOutlineFundProjectionScreen,
   AiOutlineCaretRight,
@@ -8,14 +8,14 @@ import { getMainPromotionCardData } from "../../hooks/axios/Cardlist";
 import { PromotionCard } from "./Main.interface";
 import { Link } from "react-router-dom";
 
-export default function PromotionCardlist() {
+export default function MainPromotionCardlist() {
   const [list, setList] = useState<PromotionCard[]>([]);
 
   const getData = async () => {
     const card = await getMainPromotionCardData();
     setList(card);
   };
-  
+
   useEffect(() => {
     getData();
   }, []);

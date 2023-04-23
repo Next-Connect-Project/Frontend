@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import MainProjectCard from "./MainProjectCard";
 import { ImFire } from "react-icons/im";
 import { AiOutlineCaretRight } from "react-icons/ai";
 import { getMainCardData } from "../../hooks/axios/Cardlist";
 import { Card } from "./Main.interface";
 import { Link } from "react-router-dom";
+import RecruitmentCard from "../card/RecruitmentCard";
 
-export default function ProjectCardlist() {
+export default function MainRecruitmentCardlist() {
   const [list, setList] = useState<Card[]>([]);
 
   const getData = async () => {
@@ -27,7 +27,7 @@ export default function ProjectCardlist() {
       <div className="cardlists">
         {/* 나중에 API 받아서 map으로 표현하기 */}
         {list.map((card) => {
-          return <MainProjectCard card={card} key={card.id} />;
+          return <RecruitmentCard card={card} key={card.id} />;
         })}
       </div>
       <div className="show_more_wrapper">

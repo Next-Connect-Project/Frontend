@@ -1,11 +1,8 @@
-// MainCard.tsx
 import React from "react";
-import { GrView } from "react-icons/gr";
-import { SlBubble } from "react-icons/sl";
-import { MainCardProps } from "./Main.interface";
+import { MainCardProps } from "../home/Main.interface";
 import { Link } from "react-router-dom";
 
-export default function MainProjectCard({ card }: MainCardProps) {
+export default function RecruitmentCard({ card }: MainCardProps) {
   return (
     <div className="card_wrapper">
       <Link className="link" to={`/project/${card.id}`}></Link>

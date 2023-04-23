@@ -6,6 +6,7 @@ import LoginModal from "../modal/LoginModal";
 export default function LoginButton() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const accessToken = useAppSelector((state) => state.login);
+
   const ClickModalOpen = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     setModalOpen(true);

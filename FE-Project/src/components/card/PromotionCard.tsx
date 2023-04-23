@@ -1,9 +1,9 @@
 import React from "react";
 import { RiThumbUpFill } from "react-icons/ri";
-import { MainPromotionCardProps } from "./Main.interface";
+import { MainPromotionCardProps } from "../home/Main.interface";
 import { Link } from "react-router-dom";
 
-export default function MainPromotionCard({ card }: MainPromotionCardProps) {
+export default function PromotionCard({ card }: MainPromotionCardProps) {
   return (
     <div className="card_wrapper">
       <Link className="link" to={`/promotion/${card.id}`}></Link>
