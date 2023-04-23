@@ -5,10 +5,12 @@ import LoginSlice from "./LoginSlice";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import ExpireSlice from "./ExpireSlice";
 
 //상태추가 할것 추가
 const reducers = combineReducers({
   login: LoginSlice.reducer,
+  expire: ExpireSlice.reducer,
 });
 
 const logger = createLogger();
@@ -18,15 +20,14 @@ const initialState = {};
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["login"],
+    whitelist: ["login","expire"],
 }
 const persistedReducer =persistReducer(persistConfig, reducers)
-
 
 //https://freestrokes.tistory.com/161
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck:false}).concat(logger),
   preloadedState: initialState,
   enhancers: (defaultEnhancers) => [...defaultEnhancers],
 });

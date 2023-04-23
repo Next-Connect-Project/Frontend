@@ -1,25 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "../modal/LoginModal";
 import { SortingParameter } from "../../hooks/Others";
-import { GetNaverToken, RequestNaverLogin } from "../../hooks/axios/Login";
+import { RequestNaverLogin } from "../../hooks/axios/Login";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux/store";
+import { setToken } from "../../hooks/redux/LoginSlice";
+import { setExpire } from "../../hooks/redux/ExpireSlice";
+import { setCookie } from "../../hooks/Cookie";
+import LoginButton from "./LoginButton";
+import NewPostButton from "./NewPostButton";
+
 
 export default function Header() {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
   const naver_token = SortingParameter(document.location.search);
-
-  const ClickModalOpen = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setModalOpen(true);
-  };
-
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+ 
   //인가코드로 네이버에서 토큰을 받아온후 백엔드 서버에 자체 JWT토큰 요청
   const LoginClicked = async () => {
-    const token = await GetNaverToken(naver_token);
-    console.log(token);
-    if (token?.data.access_token) {
-      const result = await RequestNaverLogin(token.data.access_token);
-      console.log(result);
+    try {
+      const click_res = await RequestNaverLogin(naver_token);
+      console.log(click_res);
+      //리프레시 토큰은 쿠키로 저장 어세스토큰은 response로 반환후 로컬에서 redux로 저장
+      if (click_res?.data.response.accessToken) {
+        let accessExp = new Date(click_res.data.response.accessExp);
+        let refreshExp = new Date(click_res.data.response.refreshExp);
+        let real_accessToken = click_res.data.response.accessToken;
+        dispatch(setToken(real_accessToken));
+        dispatch(setExpire(accessExp));
+        setCookie(
+          "refreshToken",
+          `Bearer ${click_res.data.response.refreshToken}`,
+          {
+            path: "/",
+            expires: refreshExp,
+            //실제 운용할때는 httpOnly:true로 설정 하는것이 보안상 좋으나 실제 쿠키가 적용되는지 확인하기 어려으므로 임의로 false로 설정
+            httpOnly: false,
+          }
+        );
+        navigate("/");
+      }
+    } catch {
+      alert("오류 발생");
+      navigate("/");
     }
   };
 
@@ -44,14 +68,10 @@ export default function Header() {
         </Link>
       </div>
       <div className="header_right">
-        <Link to="/post" className="header_link">
-          <div> 새글 쓰기</div>
-        </Link>
-        <div className="header_link" onClick={ClickModalOpen}>
-          로그인
-        </div>
+        <NewPostButton />
+        <LoginButton />
       </div>
-      {modalOpen ? <LoginModal setModalOpen={setModalOpen} /> : null}
+      
     </header>
   );
 }
