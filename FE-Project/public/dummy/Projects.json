@@ -47,54 +47,6 @@
           "gathered": 2,
           "view": 994,
           "comment": 45
-        },
-        {
-          "id": 5,
-          "category": "project",
-          "classification": "생활",
-          "name": "네이버랩스",
-          "title": "[사이드 프로젝트 모집] 공간 대여 플랫폼 같이 하실 분 모집합니다.",
-          "stack": ["Next.js", "React.js", "SCSS"],
-          "total": 5,
-          "gathered": 0,
-          "view": 332,
-          "comment": 1
-        },
-        {
-          "id": 6,
-          "category": "study",
-          "classification": "뷰티/패션",
-          "name": "사이드프론트",
-          "title": "[경기도] 멋있어질 남성을 위한 그루밍 플랫폼",
-          "stack": ["MongoDB", "NodeJS", "AWS", "Flutter"],
-          "total": 7,
-          "gathered": 0,
-          "view": 44,
-          "comment": 1
-        },
-        {
-          "id": 7,
-          "category": "project",
-          "classification": "뷰티/패션",
-          "name": "홍길용",
-          "title": "[경기도] 멋있어질 남성을 위한 그루밍 플랫폼",
-          "stack": ["MongoDB", "NodeJS", "AWS", "Flutter","HTML5","CSS3"],
-          "total": 5,
-          "gathered": 1,
-          "view": 99,
-          "comment": 60
-        },
-        {
-          "id": 8,
-          "category": "project",
-          "classification": "뷰티/패션",
-          "name": "리액터",
-          "title": "[경기도] 멋있어질 남성을 위한 그루밍 플랫폼",
-          "stack": ["MongoDB", "NodeJS", "AWS", "Flutter","HTML5","CSS3","Figma","React.js","Next.js","SCSS"],
-          "total": 3,
-          "gathered": 2,
-          "view": 0,
-          "comment": 0
         }
     ]
 }
