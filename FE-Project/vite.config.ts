@@ -5,13 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: {
-      '/oauth2.0':{
-        target: 'https://nid.naver.com',
-        changeOrigin: true,
-        secure: false,
-        ws: true
-      }
-    }
+    // proxy: {
+    //   '/oauth2.0':{
+    //     target: 'https://nid.naver.com',
+    //     changeOrigin: true,
+    //     secure: false,
+    //     ws: true
+    //   }
+    // }
   }
 })

@@ -1,12 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { TokenState } from "./redux.interface";
 
-interface CommonState{
-    token :string | null;
-}
-
-const initialState: CommonState = {
-    token: null
-}
+const initialState: TokenState = {
+  token: null,
+};
 
 export const LoginSlice = createSlice({
     name: 'accessToken',
@@ -19,4 +16,4 @@ export const LoginSlice = createSlice({
 });
 
 export const { setToken } = LoginSlice.actions;
-export default LoginSlice
+export default LoginSlice;
