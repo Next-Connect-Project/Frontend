@@ -21,6 +21,7 @@ export default function Post() {
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
+  //recruitment -> category로 변경
   const [recruitment, setRecruitment] = useState<string>(
     REQUIRED_DEFAULT_MESSAGE
   );

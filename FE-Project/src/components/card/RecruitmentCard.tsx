@@ -37,3 +37,15 @@ export default function RecruitmentCard({ card }: MainCardProps) {
     </div>
   );
 }
+
+//모집중인 공고
+//id
+//PROJECT STUDY
+//게시일 -> 뷰티/패션에서 변경
+//작성자 이름
+//제목
+//기술스택
+//모집현황
+
+//홍보중인 프로젝트
+//추천수 빼기
