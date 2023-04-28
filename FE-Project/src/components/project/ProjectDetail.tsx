@@ -78,10 +78,24 @@ export default function ProjectDetail() {
                         <span className="projectinfo_content">{element.duration}</span>
                     </li>
 
+
+                    <li className="projectinfo_wrapper">
+                        <span className="projectinfo_title">모임 일정</span>
+                        <span className="projectinfo_content">{element.schedule}</span>
+                    </li>
+
+
                     <li className="projectinfo_wrapper">
                         <span className="projectinfo_title">진행 방법</span>
-                        <span className="projectinfo_content">이 항목이 필요한지 논의,,</span>
+                        <span className="projectinfo_content">{element.way}</span>
                     </li>
+
+                    <li className="projectinfo_wrapper">
+                        <span className="projectinfo_title">연락 방법</span>
+                        <span className="projectinfo_content">{element.contact}</span>
+                    </li>
+
+
                     </ul>
                 </section>
                 <div className="markdownDiv" data-color-mode="light" style={{paddingTop: 30}}>

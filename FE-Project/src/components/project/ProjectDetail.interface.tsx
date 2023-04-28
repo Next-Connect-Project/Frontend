@@ -20,6 +20,8 @@ export interface Detail {
     deadline : string;
     purpose : string;
     duration : string;
+    schedule : string;
+    way: string;
   }
   
   export interface ProjectDetailProps{
