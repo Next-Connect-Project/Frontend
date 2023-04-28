@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ImFire } from "react-icons/im";
 import { AiOutlineCaretRight } from "react-icons/ai";
-import { getMainCardData } from "../../hooks/axios/Cardlist";
+import { getMainCardData } from "../../hooks/axios/MainCardlist";
 import { Card } from "./Main.interface";
 import { Link } from "react-router-dom";
 import RecruitmentCard from "../card/RecruitmentCard";

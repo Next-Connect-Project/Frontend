@@ -4,7 +4,7 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineCaretRight,
 } from "react-icons/ai";
-import { getMainPromotionCardData } from "../../hooks/axios/Cardlist";
+import { getMainPromotionCardData } from "../../hooks/axios/MainCardlist";
 import { PromotionCard } from "./Main.interface";
 import { Link } from "react-router-dom";
 

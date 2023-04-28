@@ -3,9 +3,9 @@ export interface TitleProps {
   title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
 }
-export interface RecruitmentProps {
-  recruitment: string;
-  setRecruitment: React.Dispatch<React.SetStateAction<string>>;
+export interface CategoryProps {
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface PurposeProps {
@@ -70,7 +70,6 @@ export interface IntroduceProps {
 //form
 export interface InputFormProps {
   example: string;
-  data: string;
   setData: React.Dispatch<React.SetStateAction<string>>;
 }
 export interface SelectBoxProps {

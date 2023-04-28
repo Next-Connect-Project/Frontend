@@ -2,18 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FindNewPostError } from "../../hooks/Error";
 import NewPostModal from "../modal/NewPostModal";
-import Contact from "./postform/Contact";
-import Deadline from "./postform/Deadline";
-import Duration from "./postform/Duration";
-import Introduce from "./postform/Introduce";
-import Progress from "./postform/Progress";
-import Purpose from "./postform/Purpose";
-import Recruitment from "./postform/Recruitment";
-import RecruitNumber from "./postform/RecruitNumber";
-import TechStack from "./postform/TechStack";
-import TimeAndPlace from "./postform/TimeAndPlace";
-import Title from "./postform/Title";
-import Way from "./postform/Way";
+import Contact from "../newpost/postform/Contact";
+import Deadline from "../newpost/postform/Deadline";
+import Duration from "../newpost/postform/Duration";
+import Introduce from "../newpost/postform/Introduce";
+import Progress from "../newpost/postform/Progress";
+import Purpose from "../newpost/postform/Purpose";
+import Category from "../newpost/postform/Category";
+import RecruitNumber from "../newpost/postform/RecruitNumber";
+import TechStack from "../newpost/postform/TechStack";
+import TimeAndPlace from "../newpost/postform/TimeAndPlace";
+import Title from "../newpost/postform/Title";
+import Way from "../newpost/postform/Way";
 import { Detail } from "../project/ProjectDetail.interface"
 import { getDetailData } from "../../hooks/axios/Project";
 import { useParams } from "react-router-dom";
@@ -43,7 +43,7 @@ export default function Edit() {
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
-  const [recruitment, setRecruitment] = useState<string>(
+  const [category, setCategory] = useState<string>(
     REQUIRED_DEFAULT_MESSAGE
   );
   //모임목적
@@ -104,7 +104,7 @@ export default function Edit() {
       FindNewPostError(
         REQUIRED_DEFAULT_MESSAGE,
         title,
-        recruitment,
+        category,
         purpose,
         tech,
         deadline,
@@ -122,7 +122,7 @@ export default function Edit() {
       );
   }, [
     title,
-    recruitment,
+    category,
     purpose,
     tech[0],
     tech.length,
@@ -165,9 +165,9 @@ export default function Edit() {
         <hr />
         <div className="post_form">
           <div className="post_basic_form">
-            <Recruitment
-              recruitment={recruitment}
-              setRecruitment={setRecruitment}
+            <Category
+              category={category}
+              setCategory={setCategory}
             />
             <Purpose purpose={purpose} setPurpose={setPurpose} />
             <TechStack

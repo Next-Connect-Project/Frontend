@@ -1,0 +1,125 @@
+.recruitment_wrapper {
+    padding: 70px 80px 70px 80px;
+    width: 100%;
+
+    .filter_wrapper {
+        height: 150px;
+        display: flex;
+        padding: 0px 50px 0px 50px;
+        gap: 150px;
+
+        .filter_title {
+            font-size: $font-md;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .filter_desc {
+            display: flex;
+            gap: 30px;
+
+            .filter {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 90px;
+                border-radius: 20px;
+                padding: 10px;
+                font-weight: 500;
+                background-color: $color-yellow-400;
+                cursor: pointer;
+            }
+
+            .filter:hover {
+                background-color: $color-yellow-600;
+                transition: 0.2s ease-out;
+            }
+
+            .filter_selected {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 90px;
+                border-radius: 20px;
+                padding: 10px;
+                font-weight: 500;
+                background-color: $color-yellow-800;
+                cursor: pointer;
+            }
+        }
+    }
+
+    // Cardlist 
+    .recruit_cardlist_wrapper {
+        margin: 70px 50px 70px 50px;
+
+        // width: 1570px;
+        .announcement {
+            width: 800px;
+            height: 60px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: $font-lg;
+            font-weight: 600;
+            margin-left: 80px;
+            margin-bottom: 20px;
+
+            .fire {
+                color: $color-red-600;
+            }
+        }
+
+        .cardlists {
+            // 가로 넓이 지정해줘야함 (1줄 카드개수)
+            display: flex;
+            justify-content: start;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .show_more_wrapper {
+            display: flex;
+            justify-content: end;
+
+            .show_more_Link {
+                color: $color-gray-800;
+                text-decoration: none;
+
+                .show_more {
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin-right: 80px;
+                    font-size: $font-sm;
+                    font-weight: 600;
+
+                }
+
+                .show_more:hover {
+                    background-color: $color-gray-200;
+                    border: none;
+                }
+            }
+        }
+    }
+
+    // Paging
+    .paging_wrapper{
+        display: flex;
+        justify-content: center;
+        gap:40px;
+        .button_arrow{
+            padding: 12px;
+            border-radius: 12px;
+            
+        }
+        .button_number{
+            background-color: $color-yellow-600;
+            font-weight: 600;
+            width: 50px;
+            border-radius: 10px;
+            padding: 12px;
+        }
+    }
+
+}
