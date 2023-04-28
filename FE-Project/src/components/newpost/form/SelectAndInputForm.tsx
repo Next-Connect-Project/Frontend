@@ -27,9 +27,6 @@ export default function SelectAndInputForm(props: SelectAndInputBoxProps) {
   };
 
   useEffect(() => {
-    console.log(props.data);
-  }, [props.data]);
-  useEffect(() => {
     document.addEventListener("mousedown", outsideSelect);
   });
   return (

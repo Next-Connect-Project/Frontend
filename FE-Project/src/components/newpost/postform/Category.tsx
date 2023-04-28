@@ -1,13 +1,13 @@
 import React from "react";
-import { RecruitmentProps } from "../Post.intefact";
+import { CategoryProps } from "../Post.intefact";
 import SelectForm from "../form/SelectForm";
 
-export default function Recruitment( props :RecruitmentProps) {
+export default function Category( props :CategoryProps) {
     const options = [{value: "스터디"}, {value: "프로젝트"}];
   return (
     <div>
       <div className="select_title">모집 구분</div>
-          <SelectForm options={options} data={props.recruitment} setData={props.setRecruitment} />
+          <SelectForm options={options} data={props.category} setData={props.setCategory} />
     </div>
   );
 }

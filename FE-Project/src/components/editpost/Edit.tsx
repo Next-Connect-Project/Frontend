@@ -8,7 +8,7 @@ import Duration from "../newpost/postform/Duration";
 import Introduce from "../newpost/postform/Introduce";
 import Progress from "../newpost/postform/Progress";
 import Purpose from "../newpost/postform/Purpose";
-import Recruitment from "../newpost/postform/Recruitment";
+import Category from "../newpost/postform/Category";
 import RecruitNumber from "../newpost/postform/RecruitNumber";
 import TechStack from "../newpost/postform/TechStack";
 import TimeAndPlace from "../newpost/postform/TimeAndPlace";
@@ -43,7 +43,7 @@ export default function Edit() {
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
-  const [recruitment, setRecruitment] = useState<string>(
+  const [category, setCategory] = useState<string>(
     REQUIRED_DEFAULT_MESSAGE
   );
   //모임목적
@@ -104,7 +104,7 @@ export default function Edit() {
       FindNewPostError(
         REQUIRED_DEFAULT_MESSAGE,
         title,
-        recruitment,
+        category,
         purpose,
         tech,
         deadline,
@@ -122,7 +122,7 @@ export default function Edit() {
       );
   }, [
     title,
-    recruitment,
+    category,
     purpose,
     tech[0],
     tech.length,
@@ -165,9 +165,9 @@ export default function Edit() {
         <hr />
         <div className="post_form">
           <div className="post_basic_form">
-            <Recruitment
-              recruitment={recruitment}
-              setRecruitment={setRecruitment}
+            <Category
+              category={category}
+              setCategory={setCategory}
             />
             <Purpose purpose={purpose} setPurpose={setPurpose} />
             <TechStack

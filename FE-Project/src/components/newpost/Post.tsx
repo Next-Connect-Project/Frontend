@@ -8,12 +8,12 @@ import Duration from "./postform/Duration";
 import Introduce from "./postform/Introduce";
 import Progress from "./postform/Progress";
 import Purpose from "./postform/Purpose";
-import Recruitment from "./postform/Recruitment";
 import RecruitNumber from "./postform/RecruitNumber";
 import TechStack from "./postform/TechStack";
 import TimeAndPlace from "./postform/TimeAndPlace";
 import Title from "./postform/Title";
 import Way from "./postform/Way";
+import Category from "./postform/Category";
 
 export default function Post() {
   const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
@@ -21,8 +21,8 @@ export default function Post() {
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
-  //recruitment -> category로 변경
-  const [recruitment, setRecruitment] = useState<string>(
+
+  const [category, setCategory] = useState<string>(
     REQUIRED_DEFAULT_MESSAGE
   );
   //모임목적
@@ -83,7 +83,7 @@ export default function Post() {
       FindNewPostError(
         REQUIRED_DEFAULT_MESSAGE,
         title,
-        recruitment,
+        category,
         purpose,
         tech,
         deadline,
@@ -98,10 +98,10 @@ export default function Post() {
         way,
         contact
       )
-      );
+    );
   }, [
     title,
-    recruitment,
+    category,
     purpose,
     tech[0],
     tech.length,
@@ -140,10 +140,7 @@ export default function Post() {
         <hr />
         <div className="post_form">
           <div className="post_basic_form">
-            <Recruitment
-              recruitment={recruitment}
-              setRecruitment={setRecruitment}
-            />
+            <Category category={category} setCategory={setCategory} />
             <Purpose purpose={purpose} setPurpose={setPurpose} />
             <TechStack
               default={REQUIRED_DEFAULT_MESSAGE}
@@ -217,10 +214,7 @@ export default function Post() {
         </div>
       </form>
       {modalOpen ? (
-        <NewPostModal
-          setModalOpen={setModalOpen}
-          error={error}
-        />
+        <NewPostModal setModalOpen={setModalOpen} error={error} />
       ) : null}
     </>
   );
