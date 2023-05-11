@@ -15,11 +15,11 @@ export default function NewPostButton() {
     <>
       {accessToken.token ? (
         <Link to="/post" className="header_link">
-          <div> 새글 쓰기</div>
+          <div> 새 글 쓰기</div>
         </Link>
       ) : (
         <div className="header_link" onClick={ClickModalOpen}>
-          새글 쓰기
+          새 글 쓰기
         </div>
       )}
       {modalOpen ? <LoginModal setModalOpen={setModalOpen} /> : null}
