@@ -15,17 +15,19 @@ export default function RecruitmentCardlist({
   const [totalcards, setTotalcards] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const cards = 12;
-  let offset = (page - 1) * cards;
 
   const getData = async () => {
+    //classification, state,page 바뀔때마다 reRender!! API 만들어지면 수정
     const card = await getRecruitmentCard();
+    //페이지네이션 페이지 수 계산
     setTotalcards(card.length);
+    //카드출력
     setList(card);
   };
 
   useEffect(() => {
     getData();
-  }, [classification, state]);
+  }, [classification, state, page]);
 
   return (
     <>
