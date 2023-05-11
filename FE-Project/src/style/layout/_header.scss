@@ -57,7 +57,27 @@
 
             .header_user {
                 font-size: $font-lg;
+                color: black;
+
             }
+
+            .btn-primary {
+                --bs-btn-color: black;
+                --bs-btn-hover-color: black;
+                --bs-btn-active-color: black;
+
+                --bs-btn-bg: transparent;
+                --bs-btn-border-color: transparent;
+                --bs-btn-hover-bg: transparent;
+                --bs-btn-active-bg: transparent;
+                --bs-btn-hover-border-color: transparent;
+                --bs-btn-active-border-color: transparent;
+            }
+
+            .btn {
+                --bs-btn-padding-y: 0px;
+            }
+            
         }
 
         .header_link:hover {

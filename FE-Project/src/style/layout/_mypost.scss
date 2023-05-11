@@ -1,0 +1,37 @@
+.mypost_wrapper {
+    padding: 70px 80px 70px 80px;
+    width: 100%;
+    height: 100%;
+
+    .announcement {
+        width: 800px;
+        height: 60px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: $font-lg;
+        font-weight: 600;
+        margin-left: 120px;
+        margin-bottom: 20px;
+    }
+
+    .nopost {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .notfound_image {
+            width: 550px;
+            height: 550px;
+        }
+
+        .description {
+            font-size: 30px;
+            text-align: center;
+        }
+
+    }
+    
+
+}
