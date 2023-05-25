@@ -26,15 +26,18 @@ export default function LoginButton() {
                   title={<BiUserCircle className="header_user"/>}
           >
                 <Dropdown.Item eventKey="item2">
-                  <Link to="/mypost">내가 쓴 글</Link>
+                  <Link to="/mypost">
+                    <p>내가 쓴 글</p>
+                  </Link>
                 </Dropdown.Item>
-
                 <Dropdown.Item eventKey="item2">
-                      <Link to="/setting">설정</Link>
+                  <Link to="/setting">
+                      <p>설정</p>
+                  </Link>
                 </Dropdown.Item>
 
                 {/* 로그아웃 */}
-                <Dropdown.Item eventKey="item3">로그아웃</Dropdown.Item>
+                <Dropdown.Item eventKey="item3"><div>로그아웃</div></Dropdown.Item>
           </DropdownButton>
         </div>
       ) : (
