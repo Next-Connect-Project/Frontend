@@ -63,7 +63,7 @@ export default function Edit() {
 
   
   const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
-  const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요</h3>";
+  const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요!!!!</h3>";
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분

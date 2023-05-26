@@ -40,7 +40,6 @@ export const requestAccessToken = async (accessToken: string, refreshToken: stri
       `http://ec2-13-124-65-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/reissue`,
       {
         withCredentials: true,
-        refresh: refreshToken
       },
       {
         headers: {

@@ -4,7 +4,6 @@ import { IoCloseSharp } from "react-icons/io5";
 import { SiNaver } from "react-icons/si";
 
 export default function LoginModal({ setModalOpen }: LoginModalProps) {
-
   const NAVER_CLIENT_ID = import.meta.env.VITE_NAVER_CLIENT_ID;
   const Naver_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=http://localhost:5173`;
   const closeModal = () => {

@@ -73,6 +73,25 @@
         margin: 0px 15px 0px 15px;
     }
 
+    .modal_post_bottom {
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        height: 170px;
+        font-weight: 500;
+        margin: 0px 15px 0px 15px;
+        .post_list{
+            padding: 15px;
+            border-radius: 10px;
+            background-color: $color-yellow-400;
+            text-decoration: none;
+            color: $color-gray-800;
+        }
+        .post_list:hover{
+            background-color:$color-yellow-600;
+        }
+    }
+
     .modal_login_bottom {
         display: flex;
         justify-content: center;
@@ -83,6 +102,7 @@
 
         .naver_login {
             text-decoration: none;
+
             .naver_Login_wrapper {
                 display: flex;
                 align-items: center;

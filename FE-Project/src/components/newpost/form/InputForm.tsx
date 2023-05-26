@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { InputFormProps } from "../Post.intefact";
 
 export default function InputForm({setData, example} : InputFormProps) {

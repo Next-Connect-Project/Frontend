@@ -10,7 +10,8 @@
             "total": 5,
             "gathered": 0,
             "view":4,
-            "comment":0
+            "comment":0,
+            "state": "Close"
         },
         {
           "id": 2,
@@ -22,7 +23,8 @@
           "total": 2,
           "gathered": 0,
           "view": 102,
-          "comment": 10
+          "comment": 10,
+          "state": "OPEN"
         },
         {
           "id": 3,
@@ -34,7 +36,8 @@
           "total": 0,
           "gathered": 0,
           "view": 234,
-          "comment": 10
+          "comment": 10,
+          "state": "Close"
         },
         {
           "id": 4,
@@ -46,7 +49,8 @@
           "total": 5,
           "gathered": 2,
           "view": 994,
-          "comment": 45
+          "comment": 45,
+          "state": "OPEN"
         }
     ]
 }

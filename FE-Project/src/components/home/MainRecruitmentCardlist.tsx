@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { ImFire } from "react-icons/im";
 import { AiOutlineCaretRight } from "react-icons/ai";
 import { getMainCardData } from "../../hooks/axios/MainCardlist";
-import { Card } from "./Main.interface";
 import { Link } from "react-router-dom";
 import RecruitmentCard from "../card/RecruitmentCard";
+import { Card } from "../card/Card.interface";
+import RecruitmentCardClosed from "../card/RecruitmentCardClosed";
 
 export default function MainRecruitmentCardlist() {
   const [list, setList] = useState<Card[]>([]);
 
   const getData = async () => {
     const card = await getMainCardData();
-    setList(card);
+    console.log(card);
+    // setList(card);
   };
 
   useEffect(() => {
@@ -27,7 +29,11 @@ export default function MainRecruitmentCardlist() {
       <div className="cardlists">
         {/* 나중에 API 받아서 map으로 표현하기 */}
         {list.map((card) => {
-          return <RecruitmentCard card={card} key={card.id} />;
+          return card.state === "OPEN" ? (
+            <RecruitmentCard card={card} key={card.id} />
+          ) : (
+            <RecruitmentCardClosed card={card} key={card.id} />
+          );
         })}
       </div>
       <div className="show_more_wrapper">

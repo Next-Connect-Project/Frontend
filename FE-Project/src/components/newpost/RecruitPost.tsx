@@ -14,17 +14,20 @@ import TimeAndPlace from "./postform/TimeAndPlace";
 import Title from "./postform/Title";
 import Way from "./postform/Way";
 import Category from "./postform/Category";
+import { useAppSelector } from "../../hooks/redux/store";
+import { PostRecruitment } from "../../hooks/axios/Post";
+import { useNavigate } from "react-router-dom";
 
-export default function Post() {
+export default function RecruitPost() {
+  const navigate = useNavigate();
+  const token = useAppSelector((state) => state.login);
   const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
   const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요</h3>";
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
 
-  const [category, setCategory] = useState<string>(
-    REQUIRED_DEFAULT_MESSAGE
-  );
+  const [category, setCategory] = useState<string>(REQUIRED_DEFAULT_MESSAGE);
   //모임목적
   const [purpose, setPurpose] = useState<string>("");
   //기술스택
@@ -36,7 +39,7 @@ export default function Post() {
   const [frontNumber, setFrontNumber] = useState<number>(0);
   const [backNumber, setBackNumber] = useState<number>(0);
   const [designNumber, setDesignNumber] = useState<number>(0);
-  const [PMNumber, setPMNumber] = useState<number>(0);
+  const [pmNumber, setPmNumber] = useState<number>(0);
   const [otherNumber, setOthernumber] = useState<number>(0);
 
   //진행방식
@@ -51,28 +54,51 @@ export default function Post() {
   const [contact, setContact] = useState<string>(REQUIRED_DEFAULT_MESSAGE);
   //자유 기입
   const [free, setFree] = useState<any>(FREE_MESSAGE);
-  
+
   //Error 체크
   const [error, setError] = useState<number>(0);
   //Modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  const onSubmitHandler =(e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     //모달 만들기
     if (error !== 0) {
       setModalOpen(true);
     } else {
-      console.log("에러없음");
       // api 연동
+      let submit_result = await PostRecruitment(
+        category,
+        title,
+        deadline,
+        backNumber,
+        frontNumber,
+        pmNumber,
+        otherNumber,
+        tech,
+        purpose,
+        timeandplace,
+        duration,
+        way,
+        progress,
+        contact,
+        free,
+        token.token
+      );
+      console.log(submit_result);
+      if (submit_result.data.resultCode == 200) {
+        navigate("/");
+      }
     }
   };
 
   useEffect(() => {
     if (modalOpen) {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => { document.body.style.cssText = `position: fixed; `},700);
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
     } else {
       document.body.style.cssText = "";
     }
@@ -90,7 +116,7 @@ export default function Post() {
         frontNumber,
         backNumber,
         designNumber,
-        PMNumber,
+        pmNumber,
         otherNumber,
         progress,
         duration,
@@ -109,7 +135,7 @@ export default function Post() {
     frontNumber,
     backNumber,
     designNumber,
-    PMNumber,
+    pmNumber,
     otherNumber,
     progress,
     duration,
@@ -117,7 +143,7 @@ export default function Post() {
     way,
     contact,
   ]);
-  
+
   return (
     <>
       <form className="post_wrapper" onSubmit={onSubmitHandler}>
@@ -155,8 +181,8 @@ export default function Post() {
               setBackNumber={setBackNumber}
               designNumber={designNumber}
               setDesignNumber={setDesignNumber}
-              PMNumber={PMNumber}
-              setPMNumber={setPMNumber}
+              pmNumber={pmNumber}
+              setPmNumber={setPmNumber}
               otherNumber={otherNumber}
               setOthernumber={setOthernumber}
             />
@@ -208,8 +234,7 @@ export default function Post() {
         </div>
         <div className="submit_button_wrapper">
           <button type="submit" className="btn btn-primary submit_button">
-            {" "}
-            작성하기{" "}
+            작성하기
           </button>
         </div>
       </form>

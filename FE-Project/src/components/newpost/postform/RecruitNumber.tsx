@@ -22,8 +22,8 @@ export default function RecruitNumber(props: RecruitNumberProps) {
         setBackNumber={props.setBackNumber}
         designNumber={props.designNumber}
         setDesignNumber={props.setDesignNumber}
-        PMNumber={props.PMNumber}
-        setPMNumber={props.setPMNumber}
+        pmNumber={props.pmNumber}
+        setPmNumber={props.setPmNumber}
         otherNumber={props.otherNumber}
         setOthernumber={props.setOthernumber}
       />
