@@ -13,6 +13,11 @@ export interface PurposeProps {
   setPurpose: React.Dispatch<React.SetStateAction<string>>;
 }
 
+export interface AbstractProps {
+  abstact: string;
+  setAbstract: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface RecruitNumberProps {
   frontNumber: number;
   setFrontNumber: React.Dispatch<React.SetStateAction<number>>;
@@ -20,8 +25,8 @@ export interface RecruitNumberProps {
   setBackNumber: React.Dispatch<React.SetStateAction<number>>;
   designNumber: number;
   setDesignNumber: React.Dispatch<React.SetStateAction<number>>;
-  PMNumber: number;
-  setPMNumber: React.Dispatch<React.SetStateAction<number>>;
+  pmNumber: number;
+  setPmNumber: React.Dispatch<React.SetStateAction<number>>;
   otherNumber: number;
   setOthernumber: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -70,6 +75,7 @@ export interface IntroduceProps {
 //form
 export interface InputFormProps {
   example: string;
+  data: string;
   setData: React.Dispatch<React.SetStateAction<string>>;
 }
 export interface SelectBoxProps {
@@ -93,8 +99,8 @@ export interface CheckBoxProps {
   setBackNumber: React.Dispatch<React.SetStateAction<number>>;
   designNumber: number;
   setDesignNumber: React.Dispatch<React.SetStateAction<number>>;
-  PMNumber: number;
-  setPMNumber: React.Dispatch<React.SetStateAction<number>>;
+  pmNumber: number;
+  setPmNumber: React.Dispatch<React.SetStateAction<number>>;
   otherNumber: number;
   setOthernumber: React.Dispatch<React.SetStateAction<number>>;
 }

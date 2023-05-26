@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CheckboxOption, CheckBoxProps } from "../Post.intefact";
 
 export default function CheckForm(props: CheckBoxProps) {
@@ -31,7 +31,7 @@ export default function CheckForm(props: CheckBoxProps) {
         props.setDesignNumber(e.target.value);
         break;
       case "ProjectManager":
-        props.setPMNumber(e.target.value);
+        props.setPmNumber(e.target.value);
         break;
       case "Others":
         props.setOthernumber(e.target.value);
@@ -40,7 +40,7 @@ export default function CheckForm(props: CheckBoxProps) {
         console.log("error");
     }
   };
-  
+
   return (
     <div className="checkbox_form">
       {props.options.map((data: CheckboxOption, index: number) => {
@@ -60,6 +60,7 @@ export default function CheckForm(props: CheckBoxProps) {
               type="number"
               step="1"
               min="1"
+              max="100"
               disabled={!checked[index]}
               onChange={(e) => NumberChangeHandler(data.value, e)}
             />
