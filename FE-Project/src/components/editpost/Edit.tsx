@@ -34,12 +34,36 @@ export default function Edit() {
     getData();
     //함수 
     //async await
-
   }, []);
 
+  const [isLoading, setLoading] = useState(false);
+
   
-  const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수ddddd)";
-  const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요!!!!</h3>";
+  const handleUpdate = async () => {
+    try {
+      setLoading(true); // Set loading state to true
+  
+      // Make the POST request to update the value
+      await fetch(`/api/recruit/update/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title }),
+      });
+  
+      setLoading(false); // Set loading state back to false after the request is completed
+    } catch (error) {
+      console.error("Error updating value:", error);
+      // Handle the error case if needed
+      setLoading(false); // Set loading state back to false in case of an error
+    }
+  };
+  
+
+  
+  const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
+  const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요</h3>";
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분

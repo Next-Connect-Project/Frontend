@@ -1,6 +1,6 @@
 // projectdetail.tsx
 import React,  { useEffect, useState }  from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Detail } from "./ProjectDetail.interface"
 import { getDetailData } from "../../hooks/axios/Project";
 import FreeForm from "../newpost/form/FreeForm";
@@ -8,8 +8,9 @@ import Introduce from "../newpost/postform/Introduce";
 import MDEditor, {commands, ICommand, TextState} from "@uiw/react-md-editor";
 
 
-export default function ProjectDetail() {
 
+export default function ProjectDetail() {
+    const navigate = useNavigate();
     const [list, setList] = useState<Detail[]>([]);
     const { id } = useParams<{ id: string }>();
   
@@ -18,11 +19,22 @@ export default function ProjectDetail() {
       setList(detail);
       console.log(detail);
     };
-  
+
     useEffect(() => {
-      getData();
-      console.log(list);
-    }, []);
+        getData();
+        console.log(list);
+      }, []);
+
+      const handleEdit = () => {
+        const selectedElement = list.find((element) => element.id === Number(id));
+        if (selectedElement) {
+          navigate(`/edit/${selectedElement.id}`);
+        } else {
+          console.error("Selected element not found!");
+        }
+      };
+      
+  
 
     return (
     <div>
@@ -32,6 +44,10 @@ export default function ProjectDetail() {
             return (
             <div className="detail_wrapper">
                 <section className="project_header">
+                    <div>
+                    <button onClick={handleEdit}>Edit</button>
+                        <input type='button' value='삭제'/>
+                        </div>
                     <div className="project_title">{element.title}</div>
                     <div className="id_date">
                         <div className="userid">{element.name}</div>
