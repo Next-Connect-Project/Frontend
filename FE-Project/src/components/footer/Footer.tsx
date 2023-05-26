@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
         </a>
         <a
-          href="https://github.com/2022-2-Clone-Project-Unigram"
+          href="https://github.com/Next-Connect-Project"
           target="_blank"
           rel="noreferrer noopener"
         >

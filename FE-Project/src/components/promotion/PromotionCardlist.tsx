@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "../home/Main.interface";
 import RecruitmentCard from "../card/RecruitmentCard";
 import { getRecruitmentCard } from "../../hooks/axios/RecruitmentCartlist";
-import { RecruitmentCardlistProps } from "./Recruitment.interface";
+import { RecruitmentCardlistProps } from "./Promotion.interface";
 import Paging from "./Paging";
+import { Card } from "../card/Card.interface";
 
-export default function RecruitmentCardlist({
-  classification,
+export default function PromotionCardlist({
+  sort,
   state,
 }: RecruitmentCardlistProps) {
   const [list, setList] = useState<Card[]>([]);
@@ -27,7 +27,7 @@ export default function RecruitmentCardlist({
 
   useEffect(() => {
     getData();
-  }, [classification, state, page]);
+  }, [sort, state, page]);
 
   return (
     <>
