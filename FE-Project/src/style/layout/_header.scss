@@ -58,7 +58,6 @@
             .header_user {
                 font-size: $font-lg;
                 color: black;
-
             }
 
             .btn-primary {
@@ -77,7 +76,21 @@
             .btn {
                 --bs-btn-padding-y: 0px;
             }
-            
+
+            .dropdown-menu {
+                .dropdown-item {
+                    padding-bottom: 12px;
+                    padding-top: 12px;
+                    display: flex;
+                    align-items: center;
+                    --bs-dropdown-link-active-bg: transparent;
+                    & > * {
+                        text-decoration: none;
+                        color: black;
+                    }  
+                }
+            }
+
         }
 
         .header_link:hover {
@@ -101,3 +114,4 @@
         }
     }
 }
+
