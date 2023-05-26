@@ -34,8 +34,32 @@ export default function Edit() {
     getData();
     //함수 
     //async await
-
   }, []);
+
+  const [isLoading, setLoading] = useState(false);
+
+  
+  const handleUpdate = async () => {
+    try {
+      setLoading(true); // Set loading state to true
+  
+      // Make the POST request to update the value
+      await fetch(`/api/recruit/update/${id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title }),
+      });
+  
+      setLoading(false); // Set loading state back to false after the request is completed
+    } catch (error) {
+      console.error("Error updating value:", error);
+      // Handle the error case if needed
+      setLoading(false); // Set loading state back to false in case of an error
+    }
+  };
+  
 
   
   const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
