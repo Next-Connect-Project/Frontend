@@ -1,18 +1,21 @@
 export interface FilterProps {
-  classification: number;
-  setClassification: React.Dispatch<React.SetStateAction<number>>;
-  state: number;
-  setState: React.Dispatch<React.SetStateAction<number>>;
+  classification: string;
+  setClassification: React.Dispatch<React.SetStateAction<string>>;
+  state: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface RecruitmentCardlistProps {
-  classification: number;
-  state: number;
+  classification: string;
+  state: string;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface PagingProps {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-    cards: number;
-    totalcards: number;
+  cards: number;
+  totalcards: number;
 }

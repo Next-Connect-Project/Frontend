@@ -6,15 +6,34 @@
     margin: 0 auto;
     padding: 30px 30px 30px;
 
-    .project_header {
+    .project_wrapper {
+        margin: 0px 100px 0px 100px;
 
-        .project_title {
+        .project_header {
             margin-top: 32px;
-            font-weight: 600;
-            font-size: $font-lg;
-            line-height: 126.5%;
-            letter-spacing: -.005em;
-            color: $color-black;
+            display: flex;
+            justify-content:space-between;
+            .project_title {
+                font-weight: 600;
+                font-size: $font-lg;
+                line-height: 126.5%;
+                letter-spacing: -.005em;
+                color: $color-black;
+
+            }
+            .project_owner_buttons {
+                display: flex;
+                justify-content: flex-end;
+                gap: 50px;
+                margin: 0px 200px 0px 0px;
+
+                .owner_button {
+                    font-weight: 600;
+                    padding: 15px;
+                    background-color: $color-yellow-400;
+                    border-radius: 10px;
+                }
+            }
         }
 
         .id_date {
@@ -29,7 +48,7 @@
 
         .project_info {
             display: grid;
-            grid-template-columns: repeat(1,2fr);
+            grid-template-columns: repeat(1, 2fr);
             grid-row-gap: 16px;
             row-gap: 16px;
             margin-top: 40px;
@@ -50,9 +69,10 @@
             }
         }
     }
-            .free {
-                margin-top: 40px;
-                font-size: $font-xs;
-                line-height: 1.7;
-            }
+
+    .free {
+        margin-top: 40px;
+        font-size: $font-xs;
+        line-height: 1.7;
+    }
 }

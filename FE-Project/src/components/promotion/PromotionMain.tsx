@@ -4,13 +4,12 @@ import PromotionCardlist from "./PromotionCardlist";
 
 export default function PromotionMain() {
   const [sort, setSort] = useState<number>(0);
-  const [state, setState] = useState<number>(0);
-
+  const [page, setPage] = useState<number>(1);
   return (
     <div className="recruitment_wrapper">
-      <Filter sort={sort} setSort={setSort} state={state} setState={setState} />
+      <Filter sort={sort} setSort={setSort} setPage={setPage} />
       <hr />
-      <PromotionCardlist sort={sort} state={state} />
+      <PromotionCardlist sort={sort} page={page} setPage={setPage} />
     </div>
   );
 }

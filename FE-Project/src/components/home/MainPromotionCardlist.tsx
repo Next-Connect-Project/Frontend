@@ -5,14 +5,15 @@ import {
   AiOutlineCaretRight,
 } from "react-icons/ai";
 import { getMainPromotionCardData } from "../../hooks/axios/MainCardlist";
-import { PromotionCard } from "./Main.interface";
 import { Link } from "react-router-dom";
+import { PromotionCardprops } from "../card/Card.interface";
 
 export default function MainPromotionCardlist() {
-  const [list, setList] = useState<PromotionCard[]>([]);
+  const [list, setList] = useState<PromotionCardprops[]>([]);
 
   const getData = async () => {
     const card = await getMainPromotionCardData();
+    console.log(card)
     setList(card);
   };
 
@@ -27,8 +28,7 @@ export default function MainPromotionCardlist() {
         홍보중인 프로젝트
       </div>
       <div className="cardlists">
-        {/* 나중에 API 받아서 map으로 표현하기 */}
-        {list.map((card) => {
+        {list.map((card:PromotionCardprops) => {
           return <MainPromotionCard card={card} key={card.id} />;
         })}
       </div>

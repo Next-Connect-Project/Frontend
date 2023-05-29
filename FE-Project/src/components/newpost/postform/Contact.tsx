@@ -4,10 +4,10 @@ import { ContactProps } from "../Post.intefact";
 
 export default function Contact(props: ContactProps) {
   const options = [
-    { value: "카카오톡(오픈카톡)" },
-    { value: "이메일" },
-    { value: "연락처" },
-    { value: "기타" },
+    { value: "카카오톡(오픈카톡)", name: "카카오톡(오픈카톡" },
+    { value: "이메일", name: "이메일" },
+    { value: "연락처", name: "연락처" },
+    { value: "기타", name: "기타" },
   ];
   const [select, setSelect] = useState<boolean>(false);
   return (

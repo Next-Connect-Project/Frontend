@@ -30,7 +30,7 @@ export default function PromotionPost() {
         token.token
       );
       console.log(submit_result);
-      if (submit_result.data.resultCode == 200) {
+      if (submit_result.data.resultCode === 200) {
         navigate("/");
       }
     }

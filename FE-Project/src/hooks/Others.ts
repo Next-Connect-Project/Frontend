@@ -9,7 +9,7 @@ export const getNextMonth = () => {
 export const ChangeMonthForm = (date:Date) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-    const day = date.getDay();
+    const day = date.getDate();
     const month_form = `${year}년 ${month}월 ${day}일`;
 
     return month_form;

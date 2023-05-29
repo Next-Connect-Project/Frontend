@@ -3,9 +3,9 @@ import Filter from "./Filter";
 import RecruitmentCardlist from "./RecruitmentCardlist";
 
 export default function RecruitmentMain() {
-  const [classification, setClassification] = useState<number>(0);
-  const [state, setState] = useState<number>(0);
-
+  const [classification, setClassification] = useState<string>("");
+  const [state, setState] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
   return (
     <div className="recruitment_wrapper">
       <Filter
@@ -13,9 +13,15 @@ export default function RecruitmentMain() {
         setClassification={setClassification}
         state={state}
         setState={setState}
+        setPage={setPage}
       />
       <hr />
-      <RecruitmentCardlist classification={classification} state={state} />
+      <RecruitmentCardlist
+        classification={classification}
+        state={state}
+        page={page}
+        setPage={setPage}
+      />
     </div>
   );
 }

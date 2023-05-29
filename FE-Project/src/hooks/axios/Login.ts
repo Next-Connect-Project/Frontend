@@ -23,7 +23,7 @@ import axios from "axios";
 //     });
 // };
 export const RequestNaverLogin = async (code: string) => {
-  const url = `http://ec2-13-124-65-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/login/naver`;
+  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/login/naver`;
   return await axios
     .post(url, { code: code }, { withCredentials: true })
     .then((res) => {
@@ -34,10 +34,13 @@ export const RequestNaverLogin = async (code: string) => {
     });
 };
 
-export const requestAccessToken = async (accessToken: string, refreshToken: string) => {
+export const requestAccessToken = async (
+  accessToken: string,
+  refreshToken: string
+) => {
   return await axios
     .post(
-      `http://ec2-13-124-65-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/reissue`,
+      `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/reissue`,
       {
         withCredentials: true,
       },

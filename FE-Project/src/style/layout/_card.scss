@@ -58,9 +58,18 @@
 
             .card_top_count {
                 display: flex;
-                gap: 3px;
+                gap: 10px;
                 font-size: $font-xs;
                 font-weight: 600;
+
+                .count_gap {
+                    display: flex;
+                    gap: 5px;
+
+                    .status_like {
+                        color: $color-blue;
+                    }
+                }
             }
         }
     }

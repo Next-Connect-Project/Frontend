@@ -2,15 +2,19 @@ import React from "react";
 import { PromotionFilterProps } from "./Promotion.interface";
 
 export default function Filter(props: PromotionFilterProps) {
-  //분류 Filter 0:ALL 1:PROJECT 2:STUDY
-  const onClickStudy = (e: React.MouseEvent<HTMLDivElement>) => {
+  //정렬 Filter 0:최신글 1:추천수 2: 최신글+추천수
+  const onClickRecommend = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.setSort(1);
+    if (props.sort !== 1) {
+      props.sort === 2 ? props.setSort(1) : props.setSort(2);
+    }
   };
 
-  const onClickProject = (e: React.MouseEvent<HTMLDivElement>) => {
+  const onClickNewest = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.setSort(0);
+    if (props.sort !== 0) {
+      props.sort === 2 ? props.setSort(0) : props.setSort(2);
+    }
   };
 
   return (
@@ -20,19 +24,28 @@ export default function Filter(props: PromotionFilterProps) {
         <div className="filter_desc">
           {props.sort === 0 ? (
             <>
-              <div className="filter_selected" onClick={onClickProject}>
+              <div className="filter_selected" onClick={onClickNewest}>
                 최신글
               </div>
-              <div className="filter" onClick={onClickStudy}>
+              <div className="filter" onClick={onClickRecommend}>
+                추천수
+              </div>
+            </>
+          ) : props.sort === 1 ? (
+            <>
+              <div className="filter" onClick={onClickNewest}>
+                최신글
+              </div>
+              <div className="filter_selected" onClick={onClickRecommend}>
                 추천수
               </div>
             </>
           ) : (
             <>
-              <div className="filter" onClick={onClickProject}>
+              <div className="filter_selected" onClick={onClickNewest}>
                 최신글
               </div>
-              <div className="filter_selected" onClick={onClickStudy}>
+              <div className="filter_selected" onClick={onClickRecommend}>
                 추천수
               </div>
             </>
@@ -42,4 +55,3 @@ export default function Filter(props: PromotionFilterProps) {
     </div>
   );
 }
-//Promotion Sorting 어떻게? 최신글 순서, 추천순 2개하고  Default는 무엇?
