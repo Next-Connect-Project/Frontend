@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Detail } from "./ProjectDetail.interface";
 import MDEditor from "@uiw/react-md-editor";
 import { getRecruitmentData } from "../../hooks/axios/Recruitment";
 import { useAppSelector } from "../../hooks/redux/store";
+import StateButton from "./StateButton";
+import { ChangeMonthForm } from "../../hooks/Others";
+import RecruitDeleteModal from "../modal/RecruitDeleteModal";
 
 export default function ProjectDetailForm() {
-  const navigate = useNavigate();
   const token = useAppSelector((state) => state.login);
   const [list, setList] = useState<Detail | null>(null);
+  const [state, setState] = useState<string>("OPEN");
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [created, setCreated] = useState<string|undefined>("");
   const { id } = useParams();
 
   const getData = async (pageId: string | undefined) => {
     const detail = await getRecruitmentData(pageId, token.token);
     setList(detail);
+    setState(detail.state);
+    if (detail.createdAt) {
+      setCreated(ChangeMonthForm(new Date(detail.createdAt)));
+    }
     console.log(detail);
   };
 
@@ -21,14 +30,10 @@ export default function ProjectDetailForm() {
     getData(id);
   }, [id]);
 
-  //   const handleEdit = () => {
-  //     const selectedElement = list.find((element) => element.id === Number(id));
-  //     if (selectedElement) {
-  //       navigate(`/edit/${selectedElement.id}`);
-  //     } else {
-  //       console.error("Selected element not found!");
-  //     }
-  //   };
+  const ClickModalOpen = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setModalOpen(true);
+  };
 
   return (
     <div className="detail_wrapper">
@@ -37,14 +42,21 @@ export default function ProjectDetailForm() {
           <div className="project_title">{list?.title}</div>
           {list?.owner === true ? (
             <div className="project_owner_buttons">
-              <div className="owner_button">수정</div>
-              <div className="owner_button">삭제</div>
+              <StateButton state={state} setState={setState} id={id} />
+              <Link to={`/edit/${id}`} className="link">
+                <div className="owner_button">수정</div>
+              </Link>
+              <div className="owner_button" onClick={ClickModalOpen}>
+                삭제
+              </div>
             </div>
           ) : null}
         </div>
         <div className="id_date">
           <div className="userid">{list?.memberName}</div>
-          <div className="registered_date">{list?.createdAt}</div>
+          {created === "" ? null : (
+            <div className="registered_date">{created}</div>
+          )}
         </div>
         <ul className="project_info">
           <li className="projectinfo_wrapper">
@@ -73,7 +85,10 @@ export default function ProjectDetailForm() {
             <span className="projectinfo_title">모집 인원</span>
             <div className="projectinfo_content">
               <span>Front-End: {list?.personnel.frontNumber}</span> &nbsp;
-              <span>Back-End: {list?.personnel.backNumber}</span>
+              <span>Back-End: {list?.personnel.backNumber}</span> &nbsp;
+              <span>Designer: {list?.personnel.designNumber}</span> &nbsp;
+              <span>PM: {list?.personnel.pmNumber}</span> &nbsp;
+              <span>기타: {list?.personnel.otherNumber}</span>
             </div>
           </li>
 
@@ -118,6 +133,7 @@ export default function ProjectDetailForm() {
           <MDEditor.Markdown source={list?.free} />
         </div>
       </section>
+      {modalOpen ? <RecruitDeleteModal setModalOpen={setModalOpen} id={id} /> : null}
     </div>
   );
 }

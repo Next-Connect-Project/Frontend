@@ -12,7 +12,8 @@
         .project_header {
             margin-top: 32px;
             display: flex;
-            justify-content:space-between;
+            justify-content: space-between;
+
             .project_title {
                 font-weight: 600;
                 font-size: $font-lg;
@@ -21,17 +22,40 @@
                 color: $color-black;
 
             }
+
             .project_owner_buttons {
                 display: flex;
                 justify-content: flex-end;
                 gap: 50px;
-                margin: 0px 200px 0px 0px;
+                margin: 0px 150px 0px 0px;
 
                 .owner_button {
                     font-weight: 600;
                     padding: 15px;
                     background-color: $color-yellow-400;
                     border-radius: 10px;
+                    color: $color-gray-800;
+                    cursor: pointer;
+                }
+                .owner_button:hover {
+                    background-color: $color-yellow-600;
+                }
+                
+                .open_button {
+                    font-weight: 600;
+                    padding: 15px;
+                    background-color: $color-blue;
+                    border-radius: 10px;
+                    color: $color-white;
+                    cursor: pointer;
+                }
+                .close_button {
+                    font-weight: 600;
+                    padding: 15px;
+                    background-color: $color-red-600;
+                    border-radius: 10px;
+                    color: $color-white;
+                    cursor: pointer;
                 }
             }
         }
@@ -75,4 +99,9 @@
         font-size: $font-xs;
         line-height: 1.7;
     }
+}
+
+.link{
+    text-decoration: none;
+    color:$color-gray-800;
 }

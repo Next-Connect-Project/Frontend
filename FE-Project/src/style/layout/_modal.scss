@@ -75,20 +75,22 @@
 
     .modal_post_bottom {
         display: flex;
-        justify-content:space-around;
+        justify-content: space-around;
         align-items: center;
         height: 170px;
         font-weight: 500;
         margin: 0px 15px 0px 15px;
-        .post_list{
+
+        .post_list {
             padding: 15px;
             border-radius: 10px;
             background-color: $color-yellow-400;
             text-decoration: none;
             color: $color-gray-800;
         }
-        .post_list:hover{
-            background-color:$color-yellow-600;
+
+        .post_list:hover {
+            background-color: $color-yellow-600;
         }
     }
 
@@ -125,6 +127,30 @@
             .naver_Login_wrapper:hover {
                 cursor: pointer;
             }
+        }
+    }
+
+    .modal_buttons {
+        display: flex;
+        gap:15px;
+        justify-content: flex-end;
+        margin: 0px 10px 0px 0px;
+        .return_button {
+            font-weight: 600;
+            padding: 12px 15px 12px 15px;
+            background-color: $color-blue;
+            border-radius: 10px;
+            color: $color-white;
+            cursor: pointer;
+        }
+
+        .delete_button {
+            font-weight: 600;
+            padding: 12px 15px 12px 15px;
+            background-color: $color-red-600;
+            border-radius: 10px;
+            color: $color-white;
+            cursor: pointer;
         }
     }
 }

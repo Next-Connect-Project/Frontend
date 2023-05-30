@@ -9,6 +9,7 @@ import MyPost from "./page/MyPost";
 import Setting from "./page/Setting"
 import NewPromotionPost from "./page/NewPromotionPost";
 import ProjectDetail from "./page/ProjectDetail";
+import PromotionDetail from "./page/PromotionDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/recruitment" element={<Recruitment/>}></Route>
         <Route path="/promotion" element={<Promotion/>}></Route>
         <Route path="/project/:id" element={<ProjectDetail />}></Route>
+        <Route path="/promotion/:id" element={<PromotionDetail />}></Route>
         <Route path="/edit/:id" element={<EditPost />}></Route>
         <Route path="/mypost" element={<MyPost />}></Route>
         <Route path="/setting" element={<Setting />}></Route>
