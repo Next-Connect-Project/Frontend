@@ -42,7 +42,7 @@ export default function SelectForm(props: SelectBoxProps) {
                 className="select_option"
                 onClick={(e) => ClickOptions(option.value)}
               >
-                {option.value}
+                {option.name}
               </li>
             );
           })}

@@ -2,6 +2,7 @@ import React from "react";
 import { RiThumbUpFill } from "react-icons/ri";
 import { MainPromotionCardProps } from "../home/Main.interface";
 import { Link } from "react-router-dom";
+import { GrView } from "react-icons/gr";
 
 export default function PromotionCard({ card }: MainPromotionCardProps) {
   return (
@@ -11,18 +12,32 @@ export default function PromotionCard({ card }: MainPromotionCardProps) {
         <div className="card_top_category_promotion">홍보</div>
         <div className="card_top_detail">
           <div className="card_top_count">
-            <span>
-              <RiThumbUpFill />
-            </span>
-            <span>{card.recommend}</span>
+            <div className="count_gap">
+              <span>
+                <GrView />
+              </span>
+              <span>{card.view}</span>
+            </div>
+            <div className="count_gap">
+              {card.likeStatus ? (
+                <span className="status_like">
+                  <RiThumbUpFill />
+                </span>
+              ) : (
+                <span>
+                  <RiThumbUpFill />
+                </span>
+              )}
+              <span>{card.likeCount}</span>
+            </div>
           </div>
         </div>
       </div>
-      <div className="card_date">{card.date}</div>
+      <div className="card_date">{card.createdAt}</div>
       <div className="card_name">{card.name}</div>
       <div className="card_title">{card.title}</div>
       <hr />
-      <div className="card_summary">{card.summary}</div>
+      <div className="card_summary">{card.abstractContent}</div>
     </div>
   );
 }

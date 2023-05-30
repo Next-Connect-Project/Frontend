@@ -1,12 +1,9 @@
-export interface PromotionCard {
-  id: number;
-  date: string;
-  name: string;
-  title: string;
-  summary: string;
-  recommend: number;
+import { Cardprops, PromotionCardprops } from "../card/Card.interface";
+
+export interface MainCardProps {
+  card: Cardprops;
 }
 
-export interface MainPromotionCardProps{
-    card: PromotionCard;
+export interface MainPromotionCardProps {
+  card: PromotionCardprops;
 }

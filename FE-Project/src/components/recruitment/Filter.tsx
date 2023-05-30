@@ -5,27 +5,31 @@ export default function Filter(props: FilterProps) {
   //분류 Filter 0:ALL 1:PROJECT 2:STUDY
   const onClickStudy = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.classification === 2
-      ? props.setClassification(0)
-      : props.setClassification(2);
+    props.setPage(1);
+    props.classification === "STUDY"
+      ? props.setClassification("")
+      : props.setClassification("STUDY");
   };
 
   const onClickProject = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.classification === 1
-      ? props.setClassification(0)
-      : props.setClassification(1);
+    props.setPage(1);
+    props.classification === "PROJECT"
+      ? props.setClassification("")
+      : props.setClassification("PROJECT");
   };
 
   //상태 Filter 0:ALL 1:OPEN 2:CLOSE
   const onClickClose = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.state === 2 ? props.setState(0) : props.setState(2);
+    props.setPage(1);
+    props.state === "CLOSE" ? props.setState("") : props.setState("CLOSE");
   };
 
   const onClickOpen = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    props.state === 1 ? props.setState(0) : props.setState(1);
+    props.setPage(1);
+    props.state === "OPEN" ? props.setState("") : props.setState("OPEN");
   };
 
   return (
@@ -33,7 +37,7 @@ export default function Filter(props: FilterProps) {
       <div>
         <div className="filter_title">분류</div>
         <div className="filter_desc">
-          {props.classification === 0 ? (
+          {props.classification === "" ? (
             <>
               <div className="filter" onClick={onClickProject}>
                 프로젝트
@@ -42,7 +46,7 @@ export default function Filter(props: FilterProps) {
                 스터디
               </div>
             </>
-          ) : props.classification === 2 ? (
+          ) : props.classification === "STUDY" ? (
             <>
               <div className="filter" onClick={onClickProject}>
                 프로젝트
@@ -66,7 +70,7 @@ export default function Filter(props: FilterProps) {
       <div>
         <div className="filter_title">상태</div>
         <div className="filter_desc">
-          {props.state === 0 ? (
+          {props.state === "" ? (
             <>
               <div className="filter" onClick={onClickOpen}>
                 진행중
@@ -75,7 +79,7 @@ export default function Filter(props: FilterProps) {
                 모집완료
               </div>
             </>
-          ) : props.state == 2 ? (
+          ) : props.state == "CLOSE" ? (
             <>
               <div className="filter" onClick={onClickOpen}>
                 진행중

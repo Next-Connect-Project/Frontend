@@ -14,7 +14,7 @@ import TechStack from "../newpost/postform/TechStack";
 import TimeAndPlace from "../newpost/postform/TimeAndPlace";
 import Title from "../newpost/postform/Title";
 import Way from "../newpost/postform/Way";
-import { Detail } from "../project/ProjectDetail.interface"
+import { Detail } from "../projectdetail/ProjectDetail.interface"
 import { getDetailData } from "../../hooks/axios/Project";
 import { useParams } from "react-router-dom";
 
@@ -81,7 +81,7 @@ export default function Edit() {
   const [frontNumber, setFrontNumber] = useState<number>(0);
   const [backNumber, setBackNumber] = useState<number>(0);
   const [designNumber, setDesignNumber] = useState<number>(0);
-  const [PMNumber, setPMNumber] = useState<number>(0);
+  const [pmNumber, setPmNumber] = useState<number>(0);
   const [otherNumber, setOthernumber] = useState<number>(0);
 
   //진행방식
@@ -135,7 +135,7 @@ export default function Edit() {
         frontNumber,
         backNumber,
         designNumber,
-        PMNumber,
+        pmNumber,
         otherNumber,
         progress,
         duration,
@@ -154,7 +154,7 @@ export default function Edit() {
     frontNumber,
     backNumber,
     designNumber,
-    PMNumber,
+    pmNumber,
     otherNumber,
     progress,
     duration,
@@ -207,8 +207,8 @@ export default function Edit() {
               setBackNumber={setBackNumber}
               designNumber={designNumber}
               setDesignNumber={setDesignNumber}
-              PMNumber={PMNumber}
-              setPMNumber={setPMNumber}
+              pmNumber={pmNumber}
+              setPmNumber={setPmNumber}
               otherNumber={otherNumber}
               setOthernumber={setOthernumber}
             />
