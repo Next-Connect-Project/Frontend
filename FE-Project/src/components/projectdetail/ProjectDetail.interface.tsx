@@ -24,3 +24,9 @@ export interface Detail {
     way: string;
   };
 }
+
+export interface StateButtonProps {
+  state: string;
+  setState: React.Dispatch<React.SetStateAction<string>>;
+  id: string | undefined;
+}

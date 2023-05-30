@@ -1,7 +1,7 @@
 import React from "react";
-import { ModalProps } from "react-bootstrap";
 import { IoCloseSharp } from "react-icons/io5";
 import { PrintError } from "../../hooks/Error";
+import { ModalProps } from "./Modal.interface";
 export default function NewPostModal({ setModalOpen, error }: ModalProps) {
   const closeModal = () => {
     setModalOpen(false);
