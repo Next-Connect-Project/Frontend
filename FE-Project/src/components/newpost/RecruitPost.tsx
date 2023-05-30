@@ -74,6 +74,7 @@ export default function RecruitPost() {
         deadline,
         backNumber,
         frontNumber,
+        designNumber,
         pmNumber,
         otherNumber,
         tech,

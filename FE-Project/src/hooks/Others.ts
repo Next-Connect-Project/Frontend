@@ -6,13 +6,14 @@ export const getNextMonth = () => {
   return next_month;
 };
 
-export const ChangeMonthForm = (date:Date) => {
+export const ChangeMonthForm = (date: Date | undefined) => {
+  if (date) {    
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-    const day = date.getDay();
+    const day = date.getDate();
     const month_form = `${year}년 ${month}월 ${day}일`;
-
     return month_form;
+  }
 }
 
 export const SortingParameter = (params:string) => {

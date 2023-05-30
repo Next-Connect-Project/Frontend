@@ -27,8 +27,8 @@ export default function Paging({
   };
 
   const ClickNumberButton = (idx: number) => {
-      setPage(pageset + idx);
-      window.scrollTo(0, 0);
+    setPage(pageset + idx);
+    window.scrollTo(0, 0);
   };
 
   return (

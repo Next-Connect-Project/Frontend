@@ -6,6 +6,7 @@ export const PostRecruitment = async (
   deadline: Date | undefined,
   backNumber: number,
   frontNumber: number,
+  designNumber: number,
   pmNumber: number,
   otherNumber: number,
   tech: string[],
@@ -18,18 +19,22 @@ export const PostRecruitment = async (
   free: string,
   token: string | null
 ) => {
-  let deadlineToIso = deadline?.toISOString();
+  let ToIso = deadline?.toISOString();
+  let deadlineToIso = ToIso?.substring(0, ToIso.length - 5);
   return await axios
     .post(
-      `http://ec2-13-124-65-139.ap-northeast-2.compute.amazonaws.com:8080//api/recruit/create`,
+      `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/create`,
       {
         category: category,
         title: title,
         deadline: deadlineToIso,
-        backNumber: backNumber,
-        frontNumber: frontNumber,
-        pmNumber: pmNumber,
-        otherNumber: otherNumber,
+        personnel: {
+          backNumber: backNumber,
+          frontNumber: frontNumber,
+          designNumber: designNumber,
+          pmNumber: pmNumber,
+          otherNumber: otherNumber,
+        },
         tech: tech,
         purpose: purpose,
         timeandplace: timeandplace,
@@ -57,11 +62,11 @@ export const PostPromotion = async (
   title: string,
   content: string,
   abstractContent: string,
-  token: string
+  token: string | null
 ) => {
   return await axios
     .post(
-      `http://ec2-13-124-65-139.ap-northeast-2.compute.amazonaws.com:8080//api/promotion`,
+      `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/register`,
       {
         title: title,
         content: content,

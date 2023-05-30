@@ -9,3 +9,8 @@ export interface LoginModalProps {
 export interface PostModalProps {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface DeleteModalProps {
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string | undefined;
+}

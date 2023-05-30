@@ -115,6 +115,7 @@ export interface CalendarProps {
 
 export interface Option {
   value: string;
+  name: string;
 }
 
 export interface DetailOption {

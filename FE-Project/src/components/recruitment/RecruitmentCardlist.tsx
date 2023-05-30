@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "../home/Main.interface";
 import RecruitmentCard from "../card/RecruitmentCard";
-import { getRecruitmentCard } from "../../hooks/axios/RecruitmentCartlist";
+import { getRecruitmentCard } from "../../hooks/axios/Recruitment";
 import { RecruitmentCardlistProps } from "./Recruitment.interface";
 import Paging from "./Paging";
+import { Cardprops } from "../card/Card.interface";
+import RecruitmentCardClosed from "../card/RecruitmentCardClosed";
 
 export default function RecruitmentCardlist({
   classification,
   state,
+  page,
+  setPage,
 }: RecruitmentCardlistProps) {
-  const [list, setList] = useState<Card[]>([]);
+  const [list, setList] = useState<Cardprops[]>([]);
 
   //페이지네이션을 위한 상태변수
   const [totalcards, setTotalcards] = useState<number>(0);
-  const [page, setPage] = useState<number>(1);
-  const cards = 12;
+  const cards = 16;
 
   const getData = async () => {
-    //classification, state,page 바뀔때마다 reRender!! API 만들어지면 수정
-    const card = await getRecruitmentCard();
+    const card = await getRecruitmentCard(classification, state, page);
+    console.log(card);
     //페이지네이션 페이지 수 계산
-    setTotalcards(card.length);
+    setTotalcards(card.count);
     //카드출력
-    setList(card);
+    setList(card.recruitments);
   };
 
   useEffect(() => {
@@ -34,13 +36,22 @@ export default function RecruitmentCardlist({
       <div className="recruit_cardlist_wrapper">
         <div className="cardlists">
           {/* 나중에 API 받아서 map으로 표현하기 */}
-          {list.map((card) => {
-            return <RecruitmentCard card={card} key={card.id} />;
+          {list.map((card: Cardprops) => {
+            return card.state === "OPEN" ? (
+              <RecruitmentCard card={card} key={card.id} />
+            ) : (
+              <RecruitmentCardClosed card={card} key={card.id} />
+            );
           })}
         </div>
         <div className="show_more_wrapper"></div>
       </div>
-      <Paging page={page} setPage={setPage} cards={cards} totalcards={totalcards} />
+      <Paging
+        page={page}
+        setPage={setPage}
+        cards={cards}
+        totalcards={totalcards}
+      />
     </>
   );
 }
