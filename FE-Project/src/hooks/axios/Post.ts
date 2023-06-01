@@ -46,7 +46,7 @@ export const PostRecruitment = async (
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
       }
     )
@@ -74,7 +74,7 @@ export const PostPromotion = async (
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
       }
     )

@@ -10,7 +10,7 @@ export const getPromotionCard = async (
     .get(url, {
       params: { page: page, limit: limit, sorting: sorting },
     })
-      .then((res) => {
+    .then((res) => {
       return res.data.response;
     })
     .catch((e) => {
@@ -18,16 +18,45 @@ export const getPromotionCard = async (
     });
 };
 
-
 export const getPromotionData = async (
   id: string | undefined,
   token: string | null
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/detail/${id}`;
   return await axios
-    .get(url, { headers: { Authorization: `Bearer ${token}` } })
+    .get(url, { headers: { Authorization: token } })
     .then((res) => {
       return res.data.response;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export const ChangeLikeStatus = async (
+  id: string | undefined,
+  token: string | null
+) => {
+  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/like/${id}`;
+  return await axios
+    .post(url, {}, { headers: { Authorization: token } })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export const DeletePromotionPost = async (
+  id: string | undefined,
+  token: string | null
+) => {
+  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/delete/${id}`;
+  return await axios
+    .delete(url, { headers: { Authorization: token } })
+    .then((res) => {
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
