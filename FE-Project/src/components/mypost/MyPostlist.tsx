@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { MyPost } from "./MyPost.interface";
-import { getMyPost } from "../../hooks/axios/MyPostlist"
- 
-export default function Mypostlist() {
-  const [list, setList] = useState<MyPost[]>([]);
+import { useAppSelector } from "../../hooks/redux/store";
+import { Mypostprops } from "../mypost/MyPost.interface";
+import RecruitmentCard from "../card/RecruitmentCard";
+import { getMyPostlist } from "../../hooks/axios/MyPostlist";
+
+export default function MyPostlist() {
+  const [list, setList] = useState<Mypostprops[]>([]);
+  const token = useAppSelector((state) => state.login);
+
 
   const getData = async () => {
-    const card = await getMyPost();
+    const card = await getMyPostlist(token.token);
+    console.log(card);
     setList(card);
   };
+  
 
   useEffect(() => {
     getData();
   }, []);
 
-    return (
-        <div className="postlist_wrapper">
-        {/* {list.map((card) => (
-          // 게시물 링크로 바로 이동할 수 있도록 목록형태로 표시
-          <div key={card.id}>
-            <h3>{card.title}</h3>
-          </div>
-        ))} */}
-        </div>
-    )
+  return (
+    <div className="cardlist_wrapper">
+        
+    </div>
+  );
 }
