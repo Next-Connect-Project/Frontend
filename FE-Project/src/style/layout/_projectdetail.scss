@@ -68,6 +68,13 @@
             grid-gap: 15px;
             gap: 15px;
             align-items: center;
+            .like_button{
+                font-size: $font-sm;
+                cursor: pointer;
+                .like_button_clicked{
+                    color:$color-blue
+                }
+            }
         }
 
         .project_info {
