@@ -26,7 +26,7 @@ export default function Header() {
       if (click_res?.data.response.accessToken) {
         let accessExp = new Date(click_res.data.response.accessExp);
         let refreshExp = new Date(click_res.data.response.refreshExp);
-        let real_accessToken = click_res.data.response.accessToken;
+        let real_accessToken = `Bearer ${click_res.data.response.accessToken}`;
         dispatch(setToken(real_accessToken));
         dispatch(setExpire(accessExp));
         setCookie(

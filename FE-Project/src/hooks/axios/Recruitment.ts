@@ -24,7 +24,7 @@ export const getRecruitmentData = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/detail/${id}`;
   return await axios
-    .get(url, { headers: { Authorization: `Bearer ${token}` } })
+    .get(url, { headers: { Authorization: token } })
     .then((res) => {
       return res.data.response;
     })
@@ -39,7 +39,7 @@ export const ChacngePostState = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/state/${id}`;
   return await axios
-    .patch(url, {}, { headers: { Authorization: `Bearer ${token}` } })
+    .patch(url, {}, { headers: { Authorization: token } })
     .then((res) => {
       return res.data;
     })
@@ -54,7 +54,7 @@ export const DeleteRecruitPost = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/delete/${id}`;
   return await axios
-    .delete(url, { headers: { Authorization: `Bearer ${token}` } })
+    .delete(url, { headers: { Authorization: token } })
     .then((res) => {
       return res.data;
     })
