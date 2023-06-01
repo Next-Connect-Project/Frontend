@@ -3,6 +3,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { DeleteModalProps } from "./Modal.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux/store";
+import { DeletePromotionPost } from "../../hooks/axios/Promotion";
 export default function PromotionDeleteModal({
   setModalOpen,
   id,
@@ -14,10 +15,11 @@ export default function PromotionDeleteModal({
   };
 
   const ClickDeletePost = async () => {
-    // const result_data = await DeletePost(id, token.token);
-    // if (result_data.resultCode === 200) {
-    //   navigate("/");
-    // }
+    const result_data = await DeletePromotionPost(id, token.token);
+    console.log(result_data);
+    if (result_data.resultCode === 200) {
+      navigate("/");
+    }
   };
   return (
     <div className="modal_outside" onClick={closeModal}>

@@ -7,21 +7,25 @@ import { PromotionDetail } from "./PromotionDetail.interface";
 import { ChangeMonthForm } from "../../hooks/Others";
 import { getPromotionData } from "../../hooks/axios/Promotion";
 import MDEditor from "@uiw/react-md-editor";
+import { GrView } from "react-icons/gr";
 
 export default function PromotionDetailForm() {
   const token = useAppSelector((state) => state.login);
   const [list, setList] = useState<PromotionDetail | null>(null);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [created, setCreated] = useState<string | undefined>("");
+  const [like, setLike] = useState<boolean>(false);
+  const [likecount, setLikeCount] = useState<number>(0);
   const { id } = useParams();
 
   const getData = async (pageId: string | undefined) => {
     const detail = await getPromotionData(pageId, token.token);
     setList(detail);
+    setLike(detail.likeStatus);
+    setLikeCount(detail.likeCount);
     if (detail.createdAt) {
       setCreated(ChangeMonthForm(new Date(detail.createdAt)));
     }
-    console.log(detail);
   };
 
   useEffect(() => {
@@ -48,8 +52,16 @@ export default function PromotionDetailForm() {
         <div className="id_date">
           <div className="userid">{list?.name}</div>
           <div className="registered_date">{created}</div>
-          <LikeButton />
-          <div>view</div>
+          <LikeButton
+            like={like}
+            setLike={setLike}
+            likeCount={likecount}
+            setLikeCount={setLikeCount}
+            id={id}
+          />
+          <div>
+            <GrView /> {list?.view}
+          </div>
         </div>
         <ul className="project_info">
           <li className="projectinfo_wrapper">

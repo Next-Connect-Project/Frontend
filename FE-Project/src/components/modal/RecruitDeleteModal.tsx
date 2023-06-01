@@ -3,7 +3,8 @@ import { IoCloseSharp } from "react-icons/io5";
 import { DeleteModalProps } from "./Modal.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux/store";
-import { DeletePost } from "../../hooks/axios/Recruitment";
+import { DeleteRecruitPost } from "../../hooks/axios/Recruitment";
+
 export default function RecruitDeleteModal({ setModalOpen, id }: DeleteModalProps) {
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.login);
@@ -12,7 +13,7 @@ export default function RecruitDeleteModal({ setModalOpen, id }: DeleteModalProp
   };
 
   const ClickDeletePost = async() => {
-    const result_data = await DeletePost(id, token.token);
+    const result_data = await DeleteRecruitPost(id, token.token);
     if (result_data.resultCode === 200) {
       navigate("/");
     }

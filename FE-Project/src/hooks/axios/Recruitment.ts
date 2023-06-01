@@ -48,7 +48,7 @@ export const ChacngePostState = async (
     });
 };
 
-export const DeletePost = async (
+export const DeleteRecruitPost = async (
   id: string | undefined,
   token: string | null
 ) => {
