@@ -24,7 +24,7 @@ export const getPromotionData = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/detail/${id}`;
   return await axios
-    .get(url, { headers: { Authorization: `Bearer ${token}` } })
+    .get(url, { headers: { Authorization: token } })
     .then((res) => {
       return res.data.response;
     })
@@ -39,7 +39,7 @@ export const ChangeLikeStatus = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/like/${id}`;
   return await axios
-    .post(url, {}, { headers: { Authorization: `Bearer ${token}` } })
+    .post(url, {}, { headers: { Authorization: token } })
     .then((res) => {
       return res.data;
     })
@@ -54,7 +54,7 @@ export const DeletePromotionPost = async (
 ) => {
   const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/delete/${id}`;
   return await axios
-    .delete(url, { headers: { Authorization: `Bearer ${token}` } })
+    .delete(url, { headers: { Authorization: token } })
     .then((res) => {
       return res.data;
     })
