@@ -9,6 +9,8 @@ export interface Mypostprops {
   state : String; // 마감 여부 CLOSE, OPEN 
 }
 
-export interface MyPostlistProps {
-  card: Mypostprops;
+export interface MyInfo {
+  email: string;
+  name: string;
+  role: string;
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { useAppSelector } from "../../hooks/redux/store";
 import { Mypostprops } from "../mypost/MyPost.interface";
-import { getMyPostlist, getMyPromotion } from "../../hooks/axios/MyPostlist";
+import { getMyPostlist, getMyPromotion } from "../../hooks/axios/MyPage";
 import { PromotionDetail } from "../promotiondetail/PromotionDetail.interface";
 import { Link , useParams} from "react-router-dom";
 
@@ -13,21 +13,22 @@ export default function MyPostMain() {
   const { id } = useParams();
 
   const getData = async () => {
-    const recruitment = await getMyPostlist(token.token);
-    console.log (recruitment);
-    setList (recruitment.recruitments);
+    const data = await getMyPostlist(token.token);
+    console.log("page");
+    console.log (data);
+    setList (data.recruitments);
   };
 
-  const getPromotion = async () => {
-    const detail = await getMyPromotion(token.token);
-    setPromotionlist(detail);
-  };
+  // const getPromotion = async () => {
+  //   const  = await getMyPromotion(token.token);
+  //   setPromotionlist();
+  // };
 
 
 
   useEffect(() => {
     getData();
-    getPromotion();
+    // getPromotion();
   }, []);
 
   return (

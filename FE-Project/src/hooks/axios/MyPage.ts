@@ -9,6 +9,7 @@ export const getMyPostlist = async (
       { headers: { Authorization: token, }
     })
     .then((res) => {
+      console.log("axios")
       console.log(res);
       return res.data.response;      
     })
@@ -25,6 +26,22 @@ export const getMyPromotion = async (
   return await axios
     .get(url, { headers: { Authorization: token } })
     .then((res) => {
+      return res.data.response;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export const getMyInfo = async (
+  token: string | null
+) => {
+  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/auth/my`;
+  return await axios
+    .get(url, { headers: { Authorization: token } })
+    .then((res) => {
+      console.log("axios");
+      console.log(res.data.response);
       return res.data.response;
     })
     .catch((e) => {
