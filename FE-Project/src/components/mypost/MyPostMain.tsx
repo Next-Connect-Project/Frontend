@@ -1,43 +1,62 @@
 import React, { useEffect, useState } from "react";
-import MyPostlist from "./MyPostlist";
-import { AiFillFolderOpen} from "react-icons/ai";
-import item from "../../assets/logo.png";
+import { AiFillFolderOpen } from "react-icons/ai";
 import { useAppSelector } from "../../hooks/redux/store";
 import { Mypostprops } from "../mypost/MyPost.interface";
-import { getMyPostlist } from "../../hooks/axios/MyPostlist";
-
+import { getMyPostlist, getMyPromotion } from "../../hooks/axios/MyPage";
+import { PromotionDetail } from "../promotiondetail/PromotionDetail.interface";
+import { Link , useParams} from "react-router-dom";
 
 export default function MyPostMain() {
-    const [list, setList] = useState<Mypostprops[]>([]);
-    const token = useAppSelector((state) => state.login);
-  
-  
-    const getData = async () => {
-      const card = await getMyPostlist(token.token);
-      console.log(card);
-      setList(card);
-    };
-    
-  
-    useEffect(() => {
-      getData();
-    }, []);
+  const [list, setList] = useState<Mypostprops[]>([]);
+  const [promotionlist, setPromotionlist] = useState<PromotionDetail[]>([]);
+  const token = useAppSelector((state) => state.login);
+  const { id } = useParams();
 
-    return (
-        <div className="mypost_wrapper">
+  const getData = async () => {
+    const data = await getMyPostlist(token.token);
+    console.log("page");
+    console.log (data);
+    setList (data.recruitments);
+  };
 
-            <div className="announcement">
-                <AiFillFolderOpen />
-                내가 쓴 글
-                <MyPostlist></MyPostlist>
-            </div>
+  // const getPromotion = async () => {
+  //   const  = await getMyPromotion(token.token);
+  //   setPromotionlist();
+  // };
 
-            {/* <div className="nopost">
-            <img src={item} className="notfound_image" alt="로고" />
-            <p className="description">아직 작성한 글이 없어요</p>
-            </div> */}
 
-            
+
+  useEffect(() => {
+    getData();
+    // getPromotion();
+  }, []);
+
+  return (
+    <div className="mypost_wrapper">
+      <div className="announcement">
+        <AiFillFolderOpen />
+        내가 쓴 글
+      </div>
+      
+      <div className="announcement">
+        모집
+      </div>
+      {list.map((item) => (
+        <div className="post_wrapper" key={item.id}>
+          <div>제목: {item.title}</div>
+          <div>작성일: {item.createdAt}</div>
+          <div>모집 마감: {item.deadline}</div>
+          <div>마감 여부: {item.state}</div>
+          <div>기술 스택: {item.tech.join(", ")}</div>
+          <Link className="link" to={`/project/${item.id}`}>
+            <div className="owner_button">상세보기</div>
+          </Link>
         </div>
-    );
+      ))}
+
+      <div className="announcement">
+        홍보
+      </div>
+    </div>
+  );
 }

@@ -1,6 +1,26 @@
+import { useEffect, useState } from "react";
 import { AiTwotoneSetting } from "react-icons/ai";
+import { MyInfo } from "../mypost/MyPost.interface";
+import { useAppSelector } from "../../hooks/redux/store";
+import { getMyInfo } from "../../hooks/axios/MyPage";
+import { iteratorSymbol } from "immer/dist/internal";
 
 export default function SettingMain() {
+    const [list,setList] = useState<MyInfo[]>([]);
+    const token = useAppSelector((state) => state.login);
+
+
+  const getData = async () => {
+    const data = await getMyInfo(token.token);
+    console.log(data);
+    setList(data);
+  };
+
+
+  useEffect(() => {
+    getData();
+  }, []);
+
     return (
         <>
         <div className="setting_wrapper">
@@ -8,6 +28,7 @@ export default function SettingMain() {
             <AiTwotoneSetting></AiTwotoneSetting>
             설정
             </div>
+
         </div>
         </>
     )
