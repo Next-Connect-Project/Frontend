@@ -1,13 +1,13 @@
 import React from 'react'
 import Header from '../components/header/Header'
-import Edit from '../components/editpost/Edit'
 import Footer from '../components/footer/Footer'
+import PromotionEditForm from '../components/promotionedit/PromotionEditForm'
 
-export default function EditPost() {
+export default function PromotionEdit() {
   return (
       <>
           <Header />
-          <Edit />
+          <PromotionEditForm />
           <Footer />
       </>
   )

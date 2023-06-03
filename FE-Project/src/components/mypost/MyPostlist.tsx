@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/redux/store";
 import { Mypostprops } from "../mypost/MyPost.interface";
-import RecruitmentCard from "../card/RecruitmentCard";
 import { getMyPostlist } from "../../hooks/axios/MyPostlist";
 
 export default function MyPostlist() {

@@ -17,7 +17,6 @@ export const getMainPromotionCardData = async () => {
   return await axios
     .get(url)
     .then((res) => {
-      console.log(res);
       return res.data.response;
     })
     .catch((e) => {

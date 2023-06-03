@@ -14,62 +14,22 @@ import TechStack from "../newpost/postform/TechStack";
 import TimeAndPlace from "../newpost/postform/TimeAndPlace";
 import Title from "../newpost/postform/Title";
 import Way from "../newpost/postform/Way";
-import { Detail } from "../projectdetail/ProjectDetail.interface"
-import { getDetailData } from "../../hooks/axios/Project";
-import { useParams } from "react-router-dom";
+import { Detail } from "../recruitdetail/ProjectDetail.interface";
+import { useNavigate, useParams } from "react-router-dom";
+import { EditRecruitPost, getRecruitmentData } from "../../hooks/axios/Recruitment";
+import { useAppSelector } from "../../hooks/redux/store";
 
-export default function Edit() {
-  
-  const [list, setList] = useState<Detail[]>([]); //수정 필요
-  
+export default function RecruitEditForm() {
+
   const { id } = useParams<{ id: string }>();
-    
-  const getData = async () => {
-    const detail = await getDetailData();
-    setList(detail);
-    console.log(detail);
-  };
-
-  useEffect(() => {
-    getData();
-    //함수 
-    //async await
-  }, []);
-
-  const [isLoading, setLoading] = useState(false);
-
-  
-  const handleUpdate = async () => {
-    try {
-      setLoading(true); // Set loading state to true
-  
-      // Make the POST request to update the value
-      await fetch(`/api/recruit/update/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title }),
-      });
-  
-      setLoading(false); // Set loading state back to false after the request is completed
-    } catch (error) {
-      console.error("Error updating value:", error);
-      // Handle the error case if needed
-      setLoading(false); // Set loading state back to false in case of an error
-    }
-  };
-  
-
-  
+  const token = useAppSelector((state) => state.login);
+  const navigate = useNavigate();
   const REQUIRED_DEFAULT_MESSAGE: string = "선택해주세요(필수)";
   const FREE_MESSAGE: any = "<h3>소개를 자유롭게 작성해주세요!!!!</h3>";
   //글제목
   const [title, setTitle] = useState<string>("");
   //모집구분
-  const [category, setCategory] = useState<string>(
-    REQUIRED_DEFAULT_MESSAGE
-  );
+  const [category, setCategory] = useState<string>(REQUIRED_DEFAULT_MESSAGE);
   //모임목적
   const [purpose, setPurpose] = useState<string>("");
   //기술스택
@@ -96,28 +56,78 @@ export default function Edit() {
   const [contact, setContact] = useState<string>(REQUIRED_DEFAULT_MESSAGE);
   //자유 기입
   const [free, setFree] = useState<any>(FREE_MESSAGE);
-  
+
   //Error 체크
   const [error, setError] = useState<number>(0);
   //Modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  const onSubmitHandler =(e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitHandler = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
     //모달 만들기
     if (error !== 0) {
       setModalOpen(true);
     } else {
-      console.log("에러없음");
       // api 연동
+      let edit_result = await EditRecruitPost(
+        id,
+        token.token,
+        category,
+        title,
+        deadline,
+        backNumber,
+        frontNumber,
+        designNumber,
+        pmNumber,
+        otherNumber,
+        tech,
+        purpose,
+        timeandplace,
+        duration,
+        way,
+        progress,
+        contact,
+        free,
+      );
+      console.log(edit_result);
+      if (edit_result.resultCode === 200) {
+        navigate(`/recruit/${id}`);
+      }
     }
   };
+
+  const getData = async () => {
+    const detail = await getRecruitmentData(id, token.token);
+    setTitle(detail.title);
+    setCategory(detail.category);
+    setPurpose(detail.required.purpose);
+    setTech(detail.tech);
+    setDeadline(new Date(detail.deadline));
+    setFrontNumber(detail.personnel.frontNumber);
+    setBackNumber(detail.personnel.backNumber);
+    setDesignNumber(detail.personnel.designNumber);
+    setPmNumber(detail.personnel.pmNumber);
+    setOthernumber(detail.personnel.otherNumber);
+    setProgress(detail.required.progress);
+    setDuration(detail.required.duration);
+    setTimeAndPlace(detail.required.timeandplace);
+    setWay(detail.required.way);
+    setContact(detail.required.contact);
+    setFree(detail.free);
+  
+    console.log(detail);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   useEffect(() => {
     if (modalOpen) {
       window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => { document.body.style.cssText = `position: fixed; `},700);
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
     } else {
       document.body.style.cssText = "";
     }
@@ -143,7 +153,7 @@ export default function Edit() {
         way,
         contact
       )
-      );
+    );
   }, [
     title,
     category,
@@ -162,14 +172,10 @@ export default function Edit() {
     way,
     contact,
   ]);
-  
+
   return (
     <>
-    {list
-      .filter((element) => element.id === Number(id))
-      .map((element: Detail) => {
-      return (
-        <form className="post_wrapper" onSubmit={onSubmitHandler}>
+      <form className="post_wrapper" onSubmit={onSubmitHandler}>
         <div className="post_question">
           <span className="post_question_number">1</span>
           <span className="post_question_desc">모임 제목을 입력해주세요.</span>
@@ -189,10 +195,7 @@ export default function Edit() {
         <hr />
         <div className="post_form">
           <div className="post_basic_form">
-            <Category
-              category={category}
-              setCategory={setCategory}
-            />
+            <Category category={category} setCategory={setCategory} />
             <Purpose purpose={purpose} setPurpose={setPurpose} />
             <TechStack
               default={REQUIRED_DEFAULT_MESSAGE}
@@ -260,21 +263,12 @@ export default function Edit() {
         </div>
         <div className="submit_button_wrapper">
           <button type="submit" className="btn btn-primary submit_button">
-            {" "}
-            수정하기{" "}
+            수정하기
           </button>
         </div>
       </form>
-      );
-      }
-      )
-    }
-
       {modalOpen ? (
-        <NewPostModal
-          setModalOpen={setModalOpen}
-          error={error}
-        />
+        <NewPostModal setModalOpen={setModalOpen} error={error} />
       ) : null}
     </>
   );

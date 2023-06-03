@@ -8,6 +8,7 @@ import { ChangeMonthForm } from "../../hooks/Others";
 import { getPromotionData } from "../../hooks/axios/Promotion";
 import MDEditor from "@uiw/react-md-editor";
 import { GrView } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 export default function PromotionDetailForm() {
   const token = useAppSelector((state) => state.login);
@@ -42,7 +43,9 @@ export default function PromotionDetailForm() {
           <div className="project_title">{list?.title}</div>
           {list?.owner === true ? (
             <div className="project_owner_buttons">
-              <div className="owner_button">수정</div>
+              <Link to={`/promotionedit/${id}`} className="link">
+                <div className="owner_button">수정</div>
+              </Link>
               <div className="owner_button" onClick={ClickModalOpen}>
                 삭제
               </div>

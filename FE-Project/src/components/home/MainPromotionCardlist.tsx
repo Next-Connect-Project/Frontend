@@ -13,7 +13,6 @@ export default function MainPromotionCardlist() {
 
   const getData = async () => {
     const card = await getMainPromotionCardData();
-    console.log(card)
     setList(card);
   };
 
