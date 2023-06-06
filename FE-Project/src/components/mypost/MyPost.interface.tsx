@@ -6,5 +6,11 @@ export interface Mypostprops {
   title : String; // 제목
   deadline: String; // "yyyy-MM-dd'T'HH:mm:ss" 모집 종료 시각
   tech: []; // 기술 스택
-  state : String; // 마감 여부 CLOSE, OPEN
+  state : String; // 마감 여부 CLOSE, OPEN 
+}
+
+export interface MyInfo {
+  email: string;
+  name: string;
+  role: string;
 }

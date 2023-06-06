@@ -23,7 +23,7 @@ export const PostRecruitment = async (
   let deadlineToIso = ToIso?.substring(0, ToIso.length - 5);
   return await axios
     .post(
-      `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/create`,
+      `http://www.nextconnect.shop/api/recruit/create`,
       {
         category: category,
         title: title,
@@ -66,7 +66,7 @@ export const PostPromotion = async (
 ) => {
   return await axios
     .post(
-      `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/promotion/register`,
+      `http://www.nextconnect.shop/api/promotion/register`,
       {
         title: title,
         content: content,

@@ -5,7 +5,7 @@ export const getRecruitmentCard = async (
   state: string,
   page: number
 ) => {
-  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/search`;
+  const url = `http://www.nextconnect.shop/api/recruit/search`;
   return await axios
     .get(url, {
       params: { category: classification, state: state, page: page },
@@ -22,7 +22,7 @@ export const getRecruitmentData = async (
   id: string | undefined,
   token: string | null
 ) => {
-  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/detail/${id}`;
+  const url = `http://www.nextconnect.shop/api/recruit/detail/${id}`;
   return await axios
     .get(url, { headers: { Authorization: token } })
     .then((res) => {
@@ -37,7 +37,7 @@ export const ChacngePostState = async (
   id: string | undefined,
   token: string | null
 ) => {
-  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/state/${id}`;
+  const url = `http://www.nextconnect.shop/api/recruit/state/${id}`;
   return await axios
     .patch(url, {}, { headers: { Authorization: token } })
     .then((res) => {
@@ -52,7 +52,7 @@ export const DeleteRecruitPost = async (
   id: string | undefined,
   token: string | null
 ) => {
-  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/delete/${id}`;
+  const url = `http://www.nextconnect.shop/api/recruit/delete/${id}`;
   return await axios
     .delete(url, { headers: { Authorization: token } })
     .then((res) => {
@@ -83,7 +83,7 @@ export const EditRecruitPost = async (
   contact: string,
   free: string
 ) => {
-  const url = `http://ec2-13-209-222-139.ap-northeast-2.compute.amazonaws.com:8080/api/recruit/update/${id}`;
+  const url = `http://www.nextconnect.shop/api/recruit/update/${id}`;
   let ToIso = deadline?.toISOString();
   let deadlineToIso = ToIso?.substring(0, ToIso.length - 5);
   return await axios

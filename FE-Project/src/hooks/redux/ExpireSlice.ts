@@ -6,13 +6,13 @@ const initialState: ExpireState = {
 };
 
 export const ExpireSlice = createSlice({
-    name: 'accessTokenExpire',
-    initialState,
-    reducers: {
-        setExpire(state, action: PayloadAction<Date>) {
-            state.expire = action.payload;
-        }
-    }
+  name: "accessTokenExpire",
+  initialState,
+  reducers: {
+    setExpire(state, action: PayloadAction<Date | null>) {
+      state.expire = action.payload;
+    },
+  },
 });
 
 export const { setExpire } = ExpireSlice.actions;
