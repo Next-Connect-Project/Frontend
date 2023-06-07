@@ -12,7 +12,6 @@ export default function MainRecruitmentCardlist() {
 
   const getData = async () => {
     const card = await getMainCardData();
-    console.log(card);
     setList(card);
   };
 

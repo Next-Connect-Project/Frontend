@@ -8,7 +8,7 @@ export default function RecruitmentCard({ card }: MainCardProps) {
   const endDate = ChangeMonthForm(new Date(card.deadline));
   return (
     <div className="card_wrapper">
-      <Link className="link" to={`/project/${card.id}`}></Link>
+      <Link className="link" to={`/recruit/${card.id}`}></Link>
       <div className="card_top">
         <div className="card_top_category">
           {card.category === "PROJECT" ? (

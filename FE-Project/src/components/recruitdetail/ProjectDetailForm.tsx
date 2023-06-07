@@ -13,7 +13,8 @@ export default function ProjectDetailForm() {
   const [list, setList] = useState<Detail | null>(null);
   const [state, setState] = useState<string>("OPEN");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [created, setCreated] = useState<string|undefined>("");
+  const [created, setCreated] = useState<string | undefined>("");
+  const [endDate, setEndDate] = useState<string | undefined>("");
   const { id } = useParams();
 
   const getData = async (pageId: string | undefined) => {
@@ -22,6 +23,9 @@ export default function ProjectDetailForm() {
     setState(detail.state);
     if (detail.createdAt) {
       setCreated(ChangeMonthForm(new Date(detail.createdAt)));
+    }
+    if (detail.deadline) {
+      setEndDate(ChangeMonthForm(new Date(detail.deadline)));
     }
     console.log(detail);
   };
@@ -43,7 +47,7 @@ export default function ProjectDetailForm() {
           {list?.owner === true ? (
             <div className="project_owner_buttons">
               <StateButton state={state} setState={setState} id={id} />
-              <Link to={`/edit/${id}`} className="link">
+              <Link to={`/recruitedit/${id}`} className="link">
                 <div className="owner_button">수정</div>
               </Link>
               <div className="owner_button" onClick={ClickModalOpen}>
@@ -78,7 +82,7 @@ export default function ProjectDetailForm() {
 
           <li className="projectinfo_wrapper">
             <span className="projectinfo_title">모집 마감</span>
-            <span className="projectinfo_content">{list?.deadline}</span>
+            <span className="projectinfo_content">{endDate}</span>
           </li>
 
           <li className="projectinfo_wrapper">

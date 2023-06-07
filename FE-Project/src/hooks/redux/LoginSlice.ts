@@ -6,13 +6,13 @@ const initialState: TokenState = {
 };
 
 export const LoginSlice = createSlice({
-    name: 'accessToken',
-    initialState,
-    reducers: {
-        setToken(state, action: PayloadAction<string>) {
-            state.token = action.payload;
-        }
-    }
+  name: "accessToken",
+  initialState,
+  reducers: {
+    setToken(state, action: PayloadAction<string | null>) {
+      state.token = action.payload;
+    },
+  },
 });
 
 export const { setToken } = LoginSlice.actions;
