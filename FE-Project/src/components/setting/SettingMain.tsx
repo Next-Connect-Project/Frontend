@@ -28,7 +28,7 @@ export default function SettingMain() {
         <div className="setting_wrapper">
             <div className="announcement">
             <AiTwotoneSetting></AiTwotoneSetting>
-            설정
+            내 정보
             </div>
 
             
