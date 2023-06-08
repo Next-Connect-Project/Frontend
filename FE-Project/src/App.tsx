@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./page/Home"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./page/Home";
 import NewRecruitPost from "./page/NewRecruitPost";
 import NotFound from "./page/NotFound";
 import Recruitment from "./page/Recruitment";
 import Promotion from "./page/Promotion";
 import MyPost from "./page/MyPost";
-import Setting from "./page/Setting"
+import Setting from "./page/Setting";
 import NewPromotionPost from "./page/NewPromotionPost";
 import ProjectDetail from "./page/ProjectDetail";
 import PromotionDetail from "./page/PromotionDetail";
@@ -19,8 +19,8 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/recruitpost" element={<NewRecruitPost />}></Route>
         <Route path="/promotionpost" element={<NewPromotionPost />}></Route>
-        <Route path="/recruitment" element={<Recruitment/>}></Route>
-        <Route path="/promotion" element={<Promotion/>}></Route>
+        <Route path="/recruitment" element={<Recruitment />}></Route>
+        <Route path="/promotion" element={<Promotion />}></Route>
         <Route path="/recruit/:id" element={<ProjectDetail />}></Route>
         <Route path="/promotion/:id" element={<PromotionDetail />}></Route>
         <Route path="/recruitedit/:id" element={<RecruitEdit />}></Route>
@@ -33,4 +33,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

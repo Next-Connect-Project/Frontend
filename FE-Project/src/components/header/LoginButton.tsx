@@ -19,10 +19,10 @@ export default function LoginButton() {
     setModalOpen(true);
   };
 
+  /* 로그아웃 API */
   const ClickLogout = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const logout_result = await RequestLogout();
-    console.log(logout_result);
     if (logout_result.resultCode === 200) {
       dispatch(setToken(null));
       dispatch(setExpire(null));

@@ -1,6 +1,7 @@
 import React from "react";
 import { SiNotion } from "react-icons/si";
 import { BsGithub } from "react-icons/bs";
+
 export default function Footer() {
   return (
     <div className="footer_wrapper">

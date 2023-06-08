@@ -55,7 +55,7 @@ export default function SelectAndInputForm(props: SelectAndInputBoxProps) {
           })}
         </ul>
       ) : null}
-      {selected==="선택해주세요(필수)"? null:selected === "이메일" ? (
+      {selected === "선택해주세요(필수)" ? null : selected === "이메일" ? (
         <input
           type="email"
           className="select_input_form "

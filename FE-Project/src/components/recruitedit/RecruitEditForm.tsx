@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FindNewPostError } from "../../hooks/Error";
 import NewPostModal from "../modal/NewPostModal";
@@ -14,13 +13,14 @@ import TechStack from "../newpost/postform/TechStack";
 import TimeAndPlace from "../newpost/postform/TimeAndPlace";
 import Title from "../newpost/postform/Title";
 import Way from "../newpost/postform/Way";
-import { Detail } from "../recruitdetail/ProjectDetail.interface";
 import { useNavigate, useParams } from "react-router-dom";
-import { EditRecruitPost, getRecruitmentData } from "../../hooks/axios/Recruitment";
+import {
+  EditRecruitPost,
+  getRecruitmentData,
+} from "../../hooks/axios/Recruitment";
 import { useAppSelector } from "../../hooks/redux/store";
 
 export default function RecruitEditForm() {
-
   const { id } = useParams<{ id: string }>();
   const token = useAppSelector((state) => state.login);
   const navigate = useNavigate();
@@ -62,9 +62,34 @@ export default function RecruitEditForm() {
   //Modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-  const onSubmitHandler = async(e: React.FormEvent<HTMLFormElement>) => {
+  /* 모집글 상세조회 API */
+  const getData = async () => {
+    const detail = await getRecruitmentData(id, token.token);
+    if (detail.resultCode === 200) {
+      setTitle(detail.response.title);
+      setCategory(detail.response.category);
+      setPurpose(detail.response.required.purpose);
+      setTech(detail.response.tech);
+      setDeadline(new Date(detail.response.deadline));
+      setFrontNumber(detail.response.personnel.frontNumber);
+      setBackNumber(detail.response.personnel.backNumber);
+      setDesignNumber(detail.response.personnel.designNumber);
+      setPmNumber(detail.response.personnel.pmNumber);
+      setOthernumber(detail.response.personnel.otherNumber);
+      setProgress(detail.response.required.progress);
+      setDuration(detail.response.required.duration);
+      setTimeAndPlace(detail.response.required.timeandplace);
+      setWay(detail.response.required.way);
+      setContact(detail.response.required.contact);
+      setFree(detail.response.free);
+    } else {
+      navigate("/NotFound");
+    }
+  };
+
+  /* 모집글 수정 API */
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    //모달 만들기
     if (error !== 0) {
       setModalOpen(true);
     } else {
@@ -87,52 +112,20 @@ export default function RecruitEditForm() {
         way,
         progress,
         contact,
-        free,
+        free
       );
-      console.log(edit_result);
       if (edit_result.resultCode === 200) {
         navigate(`/recruit/${id}`);
       }
     }
   };
 
-  const getData = async () => {
-    const detail = await getRecruitmentData(id, token.token);
-    setTitle(detail.title);
-    setCategory(detail.category);
-    setPurpose(detail.required.purpose);
-    setTech(detail.tech);
-    setDeadline(new Date(detail.deadline));
-    setFrontNumber(detail.personnel.frontNumber);
-    setBackNumber(detail.personnel.backNumber);
-    setDesignNumber(detail.personnel.designNumber);
-    setPmNumber(detail.personnel.pmNumber);
-    setOthernumber(detail.personnel.otherNumber);
-    setProgress(detail.required.progress);
-    setDuration(detail.required.duration);
-    setTimeAndPlace(detail.required.timeandplace);
-    setWay(detail.required.way);
-    setContact(detail.required.contact);
-    setFree(detail.free);
-  
-    console.log(detail);
-  };
-
+  /* 처음 수정 페이지 렌더링 후 기존 입력 데이터 Get */
   useEffect(() => {
     getData();
   }, []);
 
-  useEffect(() => {
-    if (modalOpen) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => {
-        document.body.style.cssText = `position: fixed; `;
-      }, 700);
-    } else {
-      document.body.style.cssText = "";
-    }
-  }, [modalOpen]);
-
+  /* 항목 입력할때 마다 오류 체크 */
   useEffect(() => {
     setError(
       FindNewPostError(
@@ -172,6 +165,18 @@ export default function RecruitEditForm() {
     way,
     contact,
   ]);
+
+  /* 모달 오픈시 화면 최상단 이동 */
+  useEffect(() => {
+    if (modalOpen) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
+    } else {
+      document.body.style.cssText = "";
+    }
+  }, [modalOpen]);
 
   return (
     <>

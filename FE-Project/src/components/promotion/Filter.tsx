@@ -2,7 +2,7 @@ import React from "react";
 import { PromotionFilterProps } from "./Promotion.interface";
 
 export default function Filter(props: PromotionFilterProps) {
-  //정렬 Filter 0:최신글 1:추천수 2: 최신글+추천수
+  /* 정렬 Filter 0:최신글 1:추천수 2: 최신글+추천 */
   const onClickRecommend = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (props.sort !== 1) {

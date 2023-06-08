@@ -6,6 +6,7 @@ export default function RecruitmentMain() {
   const [classification, setClassification] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+  
   return (
     <div className="recruitment_wrapper">
       <Filter

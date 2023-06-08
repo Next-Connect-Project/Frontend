@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { RecruitNumberProps } from "../Post.intefact";
 import CheckForm from "../form/CheckForm";
 
@@ -10,7 +10,7 @@ export default function RecruitNumber(props: RecruitNumberProps) {
     { value: "ProjectManager", name: "PM" },
     { value: "Others", name: "기타" },
   ];
-  
+
   return (
     <div>
       <div className="checkbox_title">모집 인원</div>

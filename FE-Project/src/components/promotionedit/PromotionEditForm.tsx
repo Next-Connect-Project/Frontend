@@ -12,26 +12,32 @@ import {
 } from "../../hooks/axios/Promotion";
 
 export default function PromotionEditForm() {
-  const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
   const token = useAppSelector((state) => state.login);
-
   const [title, setTitle] = useState<string>("");
   const [abstact, setAbstract] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<number>(0);
 
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+
+  /* 상세 홍보글 조회 API */
   const getData = async () => {
     const detail = await getPromotionData(id, token.token);
-    setTitle(detail.title);
-    setContent(detail.content);
-    setAbstract(detail.abstractContent);
-    console.log(detail);
+    if (detail.resultCode === 200) {
+      setTitle(detail.response.title);
+      setContent(detail.response.content);
+      setAbstract(detail.response.abstractContent);
+    } else {
+      navigate("/NotFound");
+    }
   };
 
+  /* 홍보 글 수정 API */
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (error !== 0) {
       setModalOpen(true);
     } else {
@@ -41,20 +47,34 @@ export default function PromotionEditForm() {
         title,
         content,
         abstact
-        );
-        console.log(edit_result);
-        if (edit_result.resultCode === 200) {
-          navigate("/");
-        }
+      );
+      if (edit_result.resultCode === 200) {
+        navigate("/");
+      }
     }
   };
+
+  /* 처음 수정 페이지 렌더링 후 기존 입력 데이터 Get */
   useEffect(() => {
     getData();
   }, []);
 
+  /* 항목 입력시 모다 오류 체크 */
   useEffect(() => {
     setError(FindNewPromotionPostError(title, abstact, content));
   }, [title, abstact, content]);
+
+  /* 모달 오픈시 화면 최상단 이동 */
+  useEffect(() => {
+    if (modalOpen) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
+    } else {
+      document.body.style.cssText = "";
+    }
+  }, [modalOpen]);
 
   return (
     <>

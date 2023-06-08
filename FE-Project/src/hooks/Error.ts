@@ -75,7 +75,7 @@ export const FindNewPromotionPostError = (
     */
   if (title === "") {
     return 1;
-  } else if (abstract ==="") {
+  } else if (abstract === "") {
     return 12;
   } else if (abstract.length > 50) {
     return 13;
@@ -109,12 +109,12 @@ export const PrintError = (error: number) => {
     return "진행 방법을 입력 해주세요.";
   } else if (error === 11) {
     return "연락 방법을 입력해주세요.";
-  } else if (error ===12) {
+  } else if (error === 12) {
     return "홍보 요약 입력 항목을 입력해주세요.";
   } else if (error === 13) {
-    return "홍보 요약 입력 항목의 내용이 50글자를 초과하였습니다."
+    return "홍보 요약 입력 항목의 내용이 50글자를 초과하였습니다.";
   } else if (error === 14) {
-    return "홍보 내용을 입력해주세요."
+    return "홍보 내용을 입력해주세요.";
   } else {
     return "확인되지 않은 오류 입니다. 관리자에게 문의해주세요.";
   }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getRecruitmentCard = async (
+export const getRecruitmentCards = async (
   classification: string,
   state: string,
   page: number
@@ -11,7 +11,7 @@ export const getRecruitmentCard = async (
       params: { category: classification, state: state, page: page },
     })
     .then((res) => {
-      return res.data.response;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
@@ -26,7 +26,7 @@ export const getRecruitmentData = async (
   return await axios
     .get(url, { headers: { Authorization: token } })
     .then((res) => {
-      return res.data.response;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
@@ -112,7 +112,6 @@ export const EditRecruitPost = async (
       { headers: { Authorization: token } }
     )
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((e) => {

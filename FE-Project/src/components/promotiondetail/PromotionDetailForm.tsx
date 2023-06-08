@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LikeButton from "./LikeButton";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PromotionDeleteModal from "../modal/PromotionDeleteModal";
 import { useAppSelector } from "../../hooks/redux/store";
 import { PromotionDetail } from "./PromotionDetail.interface";
@@ -18,24 +18,33 @@ export default function PromotionDetailForm() {
   const [like, setLike] = useState<boolean>(false);
   const [likecount, setLikeCount] = useState<number>(0);
   const { id } = useParams();
+  const navigate = useNavigate();
 
+  /* 상세 홍보 글 조회 API */
   const getData = async (pageId: string | undefined) => {
     const detail = await getPromotionData(pageId, token.token);
-    setList(detail);
-    setLike(detail.likeStatus);
-    setLikeCount(detail.likeCount);
-    if (detail.createdAt) {
-      setCreated(ChangeMonthForm(new Date(detail.createdAt)));
+    console.log(detail);
+    if (detail.resultCode === 200) {
+      setList(detail.response);
+      setLike(detail.response.likeStatus);
+      setLikeCount(detail.response.likeCount);
+      if (detail.response.createdAt) {
+        setCreated(ChangeMonthForm(new Date(detail.response.createdAt)));
+      }
+    } else {
+      navigate('/NotFound');
     }
+  };
+
+  const ClickModalOpen = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setModalOpen(true);
   };
 
   useEffect(() => {
     getData(id);
   }, [id]);
-  const ClickModalOpen = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setModalOpen(true);
-  };
+
   return (
     <div className="detail_wrapper">
       <section className="project_wrapper">
