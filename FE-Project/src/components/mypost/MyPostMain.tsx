@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { useAppSelector } from "../../hooks/redux/store";
 import { Mypostprops } from "../mypost/MyPost.interface";
-import { getMyPostlist, getMyPromotion } from "../../hooks/axios/MyPage";
+import { getMyRecuritment, getMyPromotion } from "../../hooks/axios/MyPage";
 import { PromotionDetail } from "../promotiondetail/PromotionDetail.interface";
 import { Link , useParams} from "react-router-dom";
 
@@ -13,7 +13,7 @@ export default function MyPostMain() {
   const { id } = useParams();
 
   const getData = async () => {
-    const data = await getMyPostlist(token.token);
+    const data = await getMyRecuritment(token.token);
     console.log("page");
     console.log (data);
     setList (data.recruitments);
@@ -43,11 +43,11 @@ export default function MyPostMain() {
       </div>
       {list.map((item) => (
         <div className="post_wrapper" key={item.id}>
-          <div>제목: {item.title}</div>
-          <div>작성일: {item.createdAt}</div>
-          <div>모집 마감: {item.deadline}</div>
-          <div>마감 여부: {item.state}</div>
-          <div>기술 스택: {item.tech.join(", ")}</div>
+          <div className="content"><span>제목:</span> {item.title}</div>
+          <div className="content"><span>작성일:</span> {item.createdAt}</div>
+          <div className="content"><span>모집 마감:</span> {item.deadline}</div>
+          <div className="content"><span>마감 여부:</span> {item.state}</div>
+          <div className="content"><span>기술 스택:</span> {item.tech.join(", ")}</div>
           <Link className="link" to={`/project/${item.id}`}>
             <div className="owner_button">상세보기</div>
           </Link>
@@ -56,6 +56,17 @@ export default function MyPostMain() {
 
       <div className="announcement">
         홍보
+      </div>
+      
+      
+      <div className="post_wrapper">
+        <div className="content"><span>제목:</span> </div>
+        <div className="content"><span>작성일:</span> </div>
+        <div className="content"><span>모집 마감:</span> </div>
+        <div className="content"><span>마감 여부:</span> </div>
+        <Link className="link" to={`/promotion`}>
+            <div className="owner_button">상세보기</div>
+        </Link>
       </div>
     </div>
   );
