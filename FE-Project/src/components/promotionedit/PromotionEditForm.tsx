@@ -1,42 +1,65 @@
 import React, { useEffect, useState } from "react";
-import Title from "./postform/Title";
-import Introduce from "./postform/Introduce";
-import NewPostModal from "../modal/NewPostModal";
-import Abstract from "./postform/Abstract";
 import { FindNewPromotionPostError } from "../../hooks/Error";
 import { useAppSelector } from "../../hooks/redux/store";
-import { PostPromotion } from "../../hooks/axios/Post";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Title from "../newpost/postform/Title";
+import Abstract from "../newpost/postform/Abstract";
+import Introduce from "../newpost/postform/Introduce";
+import NewPostModal from "../modal/NewPostModal";
+import {
+  EditPromotionPost,
+  getPromotionData,
+} from "../../hooks/axios/Promotion";
 
-export default function PromotionPost() {
-  const navigate = useNavigate();
+export default function PromotionEditForm() {
   const token = useAppSelector((state) => state.login);
-
   const [title, setTitle] = useState<string>("");
   const [abstact, setAbstract] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<number>(0);
 
-  /* 홍보 글 등록 API */
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+
+  /* 상세 홍보글 조회 API */
+  const getData = async () => {
+    const detail = await getPromotionData(id, token.token);
+    if (detail.resultCode === 200) {
+      setTitle(detail.response.title);
+      setContent(detail.response.content);
+      setAbstract(detail.response.abstractContent);
+    } else {
+      navigate("/NotFound");
+    }
+  };
+
+  /* 홍보 글 수정 API */
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (error !== 0) {
       setModalOpen(true);
     } else {
-      let submit_result = await PostPromotion(
+      let edit_result = await EditPromotionPost(
+        id,
+        token.token,
         title,
         content,
-        abstact,
-        token.token
+        abstact
       );
-      if (submit_result.data.resultCode === 200) {
+      if (edit_result.resultCode === 200) {
         navigate("/");
       }
     }
   };
 
-  /* 항목 입력할때 마다 오류 체크 */
+  /* 처음 수정 페이지 렌더링 후 기존 입력 데이터 Get */
+  useEffect(() => {
+    getData();
+  }, []);
+
+  /* 항목 입력시 모다 오류 체크 */
   useEffect(() => {
     setError(FindNewPromotionPostError(title, abstact, content));
   }, [title, abstact, content]);

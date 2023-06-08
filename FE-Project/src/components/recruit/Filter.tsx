@@ -2,7 +2,7 @@ import React from "react";
 import { FilterProps } from "./Recruitment.interface";
 
 export default function Filter(props: FilterProps) {
-  //분류 Filter 0:ALL 1:PROJECT 2:STUDY
+  /* 분류 Filter 0:ALL 1:PROJECT 2:STUDY */
   const onClickStudy = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     props.setPage(1);
@@ -19,7 +19,7 @@ export default function Filter(props: FilterProps) {
       : props.setClassification("PROJECT");
   };
 
-  //상태 Filter 0:ALL 1:OPEN 2:CLOSE
+  /* 상태 Filter 0:ALL 1:OPEN 2:CLOSE */
   const onClickClose = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     props.setPage(1);

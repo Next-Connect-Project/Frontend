@@ -1,8 +1,8 @@
-import React from 'react'
-import InputForm from '../form/InputForm';
-import { TimeAndPlaceProps } from '../Post.intefact';
+import React from "react";
+import InputForm from "../form/InputForm";
+import { TimeAndPlaceProps } from "../Post.intefact";
 
-export default function TimeAndPlace(props:TimeAndPlaceProps) {
+export default function TimeAndPlace(props: TimeAndPlaceProps) {
   const example = "매주 목요일 13시, 강남역 앞 스타벅스 강남R점 ";
   return (
     <div>

@@ -24,7 +24,7 @@ export default function SelectForm(props: SelectBoxProps) {
   });
   return (
     <div ref={target}>
-      <ul className="select_form" onClick={ShowSelectOptions} tabIndex={0} >
+      <ul className="select_form" onClick={ShowSelectOptions} tabIndex={0}>
         <li className="selected_option">{props.data}</li>
         <div className="select_right">
           <div className="division">&nbsp;</div>

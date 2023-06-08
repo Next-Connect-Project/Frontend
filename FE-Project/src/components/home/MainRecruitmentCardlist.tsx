@@ -2,18 +2,23 @@ import React, { useEffect, useState } from "react";
 import { ImFire } from "react-icons/im";
 import { AiOutlineCaretRight } from "react-icons/ai";
 import { getMainCardData } from "../../hooks/axios/MainCardlist";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RecruitmentCard from "../card/RecruitmentCard";
-import { Cardprops } from "../card/Card.interface";
 import RecruitmentCardClosed from "../card/RecruitmentCardClosed";
+import { RecruitCardprops } from "./Main.interface";
 
 export default function MainRecruitmentCardlist() {
-  const [list, setList] = useState<Cardprops[]>([]);
-
+  const [list, setList] = useState<RecruitCardprops[]>([]);
+  const navigate = useNavigate();
+  
+  /*홍보글 메인페이지 조회 API*/
   const getData = async () => {
     const card = await getMainCardData();
-    console.log(card);
-    setList(card);
+    if (card.resultCode === 200) {
+      setList(card.response.recruitments);
+    } else {
+      navigate("/NotFonud")
+    }
   };
 
   useEffect(() => {
@@ -27,7 +32,7 @@ export default function MainRecruitmentCardlist() {
         모집중인 공고
       </div>
       <div className="cardlists">
-        {list.map((card: Cardprops) => {
+        {list.map((card: RecruitCardprops) => {
           return card.state === "OPEN" ? (
             <RecruitmentCard card={card} key={card.id} />
           ) : (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { PagingProps } from "./Promotion.interface";
+
 export default function Paging({
   page,
   setPage,
@@ -27,8 +28,8 @@ export default function Paging({
   };
 
   const ClickNumberButton = (idx: number) => {
-      setPage(pageset + idx);
-      window.scrollTo(0, 0);
+    setPage(pageset + idx);
+    window.scrollTo(0, 0);
   };
 
   return (

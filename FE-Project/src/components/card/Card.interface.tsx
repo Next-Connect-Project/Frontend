@@ -1,22 +1,9 @@
-export interface Cardprops {
-  id: number;
-  category: string;
-  classification: string;
-  memberName: string;
-  title: string;
-  tech: string[];
-  state: string;
-  createdAt: string;
-  deadline: string;
+import { PromotionCardprops, RecruitCardprops } from "../home/Main.interface";
+
+export interface MainCardProps {
+  card: RecruitCardprops;
 }
 
-export interface PromotionCardprops {
-  id: number;
-  createdAt: string;
-  name: string;
-  title: string;
-  abstractContent: string;
-  likeCount: number;
-  view: number;
-  likeStatus: boolean;
+export interface MainPromotionCardProps {
+  card: PromotionCardprops;
 }

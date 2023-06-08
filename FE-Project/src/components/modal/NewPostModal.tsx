@@ -15,7 +15,7 @@ export default function NewPostModal({ setModalOpen, error }: ModalProps) {
             <IoCloseSharp />
           </button>
         </div>
-        <hr/>
+        <hr />
         <div className="modal_bottom">{PrintError(error)}</div>
       </div>
     </div>

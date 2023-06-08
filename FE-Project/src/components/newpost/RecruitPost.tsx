@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FindNewPostError } from "../../hooks/Error";
 import NewPostModal from "../modal/NewPostModal";
@@ -60,14 +59,12 @@ export default function RecruitPost() {
   //Modal
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  /* 모집글 저장 API */
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    //모달 만들기
     if (error !== 0) {
       setModalOpen(true);
     } else {
-      // api 연동
       let submit_result = await PostRecruitment(
         category,
         title,
@@ -87,24 +84,13 @@ export default function RecruitPost() {
         free,
         token.token
       );
-      console.log(submit_result);
       if (submit_result.data.resultCode == 200) {
         navigate("/");
       }
     }
   };
 
-  useEffect(() => {
-    if (modalOpen) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setTimeout(() => {
-        document.body.style.cssText = `position: fixed; `;
-      }, 700);
-    } else {
-      document.body.style.cssText = "";
-    }
-  }, [modalOpen]);
-
+  /* 항목 입력할때 마다 오류 체크 */
   useEffect(() => {
     setError(
       FindNewPostError(
@@ -144,6 +130,18 @@ export default function RecruitPost() {
     way,
     contact,
   ]);
+
+  /* 모달 오픈시 화면 최상단 이동 */
+  useEffect(() => {
+    if (modalOpen) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
+    } else {
+      document.body.style.cssText = "";
+    }
+  }, [modalOpen]);
 
   return (
     <>

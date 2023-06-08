@@ -1,4 +1,4 @@
-//postform
+/* Postform */
 export interface TitleProps {
   title: string;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
@@ -72,7 +72,7 @@ export interface IntroduceProps {
   setFree: any;
 }
 
-//form
+/* Form */
 export interface InputFormProps {
   example: string;
   data: string;

@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChangeMonthForm } from "../../hooks/Others";
-import { MainCardProps } from "../home/Main.interface";
+import { MainCardProps } from "./Card.interface";
 
 export default function RecruitmentCardClosed({ card }: MainCardProps) {
   const startDate = ChangeMonthForm(new Date(card.createdAt));
   const endDate = ChangeMonthForm(new Date(card.deadline));
   return (
     <div className="card_wrapper_closed">
-      <Link className="link" to={`/project/${card.id}`}></Link>
+      <Link className="link" to={`/recruit/${card.id}`}></Link>
       <div className="card_top">
         <div className="card_top_category">
           {card.category === "PROJECT" ? (

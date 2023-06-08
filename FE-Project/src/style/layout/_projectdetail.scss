@@ -8,6 +8,7 @@
 
     .project_wrapper {
         margin: 0px 100px 0px 100px;
+        min-height: 50vh;
 
         .project_header {
             margin-top: 32px;
@@ -37,10 +38,11 @@
                     color: $color-gray-800;
                     cursor: pointer;
                 }
+
                 .owner_button:hover {
                     background-color: $color-yellow-600;
                 }
-                
+
                 .open_button {
                     font-weight: 600;
                     padding: 15px;
@@ -49,6 +51,7 @@
                     color: $color-white;
                     cursor: pointer;
                 }
+
                 .close_button {
                     font-weight: 600;
                     padding: 15px;
@@ -68,11 +71,13 @@
             grid-gap: 15px;
             gap: 15px;
             align-items: center;
-            .like_button{
+
+            .like_button {
                 font-size: $font-sm;
                 cursor: pointer;
-                .like_button_clicked{
-                    color:$color-blue
+
+                .like_button_clicked {
+                    color: $color-blue
                 }
             }
         }
@@ -108,7 +113,7 @@
     }
 }
 
-.link{
+.link {
     text-decoration: none;
-    color:$color-gray-800;
+    color: $color-gray-800;
 }

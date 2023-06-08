@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-import RecruitmentMain from "../components/recruit/RecruitmentMain";
+import RecruitEditForm from "../components/recruitedit/RecruitEditForm";
 
-export default function Recruitment() {
+export default function RecruitEdit() {
   return (
     <>
       <Header />
-      <RecruitmentMain />
+      <RecruitEditForm />
       <Footer />
     </>
   );

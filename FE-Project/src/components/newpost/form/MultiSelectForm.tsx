@@ -1,12 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";
-import {AiOutlineCaretRight} from "react-icons/ai"
-import {
-  MultiSelectBoxProps,
-  DetailOption,
-  Detail,
-} from "../Post.intefact";
+import { AiOutlineCaretRight } from "react-icons/ai";
+import { MultiSelectBoxProps, DetailOption, Detail } from "../Post.intefact";
 
 export default function MultiSelectForm(props: MultiSelectBoxProps) {
   const [showOptions, setShowOptions] = useState<boolean>(false);
@@ -28,7 +24,7 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
     setShowDetailOptions(true);
   };
 
-  const ClickOptions = (option: string, value:string) => {
+  const ClickOptions = (option: string, value: string) => {
     setShowDetailOptions(false);
     setShowOptions(false);
     if (props.data.find((element) => element === option) === undefined) {
@@ -39,6 +35,7 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
       console.log(props.data);
     }
   };
+
   const ResetSelectOptions = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     props.setData([props.default]);
@@ -47,6 +44,7 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
   useEffect(() => {
     document.addEventListener("mousedown", outsideSelect);
   });
+
   return (
     <div ref={target}>
       <ul className="select_form" onClick={ShowSelectOptions} tabIndex={0}>
@@ -76,10 +74,8 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
                 className="multi_select_option"
                 onMouseEnter={(e) => ShowDetailOptions(option.value)}
               >
-                <span>
-                {option.value}
-                </span>
-              <AiOutlineCaretRight className="right" />
+                <span>{option.value}</span>
+                <AiOutlineCaretRight className="right" />
               </li>
             );
           })}
@@ -89,22 +85,22 @@ export default function MultiSelectForm(props: MultiSelectBoxProps) {
       {showDetailOptions ? (
         <ul className="multi_select_options">
           {props.options.map((option: DetailOption) => {
-            return(
-            option.value === hover ? (
-              option.detail.map((detailvalue:Detail,index:number) => {
-                 return (
-                   <li
-                     key={detailvalue.option}
-                     style={{top:`${index*37}px`}}
-                     className="multi_select_detail_option"
-                     onClick={(e) =>ClickOptions(detailvalue.option,option.value)}
-                   >
-                     {detailvalue.option}
-                   </li>
-                 );
-              })
-              ) : null
-            )
+            return option.value === hover
+              ? option.detail.map((detailvalue: Detail, index: number) => {
+                  return (
+                    <li
+                      key={detailvalue.option}
+                      style={{ top: `${index * 37}px` }}
+                      className="multi_select_detail_option"
+                      onClick={(e) =>
+                        ClickOptions(detailvalue.option, option.value)
+                      }
+                    >
+                      {detailvalue.option}
+                    </li>
+                  );
+                })
+              : null;
           })}
         </ul>
       ) : null}
