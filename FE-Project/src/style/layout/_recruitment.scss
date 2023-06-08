@@ -104,16 +104,18 @@
     }
 
     // Paging
-    .paging_wrapper{
+    .paging_wrapper {
         display: flex;
         justify-content: center;
-        gap:40px;
-        .button_arrow{
+        gap: 40px;
+
+        .button_arrow {
             padding: 12px;
             border-radius: 12px;
-            
+
         }
-        .button_number{
+
+        .button_number {
             background-color: $color-yellow-600;
             font-weight: 600;
             width: 50px;

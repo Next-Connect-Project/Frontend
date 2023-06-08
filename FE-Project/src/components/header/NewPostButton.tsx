@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux/store";
 import LoginModal from "../modal/LoginModal";
 import PostModal from "../modal/PostModal";

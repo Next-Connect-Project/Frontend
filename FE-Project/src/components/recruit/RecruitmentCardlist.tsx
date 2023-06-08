@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import RecruitmentCard from "../card/RecruitmentCard";
-import { getRecruitmentCard } from "../../hooks/axios/Recruitment";
+import { getRecruitmentCards } from "../../hooks/axios/Recruitment";
 import { RecruitmentCardlistProps } from "./Recruitment.interface";
 import Paging from "./Paging";
-import { Cardprops } from "../card/Card.interface";
 import RecruitmentCardClosed from "../card/RecruitmentCardClosed";
+import { RecruitCardprops } from "../home/Main.interface";
+import { useNavigate } from "react-router-dom";
 
 export default function RecruitmentCardlist({
   classification,
@@ -12,21 +13,23 @@ export default function RecruitmentCardlist({
   page,
   setPage,
 }: RecruitmentCardlistProps) {
-  const [list, setList] = useState<Cardprops[]>([]);
-
-  //페이지네이션을 위한 상태변수
+  const [list, setList] = useState<RecruitCardprops[]>([]);
   const [totalcards, setTotalcards] = useState<number>(0);
   const cards = 16;
+  const navigate = useNavigate();
 
+  /* 모집글 검색 조회 API */
   const getData = async () => {
-    const card = await getRecruitmentCard(classification, state, page);
-    console.log(card);
-    //페이지네이션 페이지 수 계산
-    setTotalcards(card.count);
-    //카드출력
-    setList(card.recruitments);
+    const card = await getRecruitmentCards(classification, state, page);
+    if (card.resultCode === 200) {
+      setTotalcards(card.response.count);
+      setList(card.response.recruitments);
+    } else {
+      navigate("/Notfound");
+    }
   };
 
+  /* 분류, 상태, 페이지 바뀔때 마다 Rerender */
   useEffect(() => {
     getData();
   }, [classification, state, page]);
@@ -35,8 +38,7 @@ export default function RecruitmentCardlist({
     <>
       <div className="recruit_cardlist_wrapper">
         <div className="cardlists">
-          {/* 나중에 API 받아서 map으로 표현하기 */}
-          {list.map((card: Cardprops) => {
+          {list.map((card: RecruitCardprops) => {
             return card.state === "OPEN" ? (
               <RecruitmentCard card={card} key={card.id} />
             ) : (

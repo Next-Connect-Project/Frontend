@@ -19,9 +19,35 @@ export const RequestAccessToken = async (accessToken: string | null) => {
     .get(url, {
       headers: {
         Authorization: accessToken,
+        "Access-Control-Allow-Origin": "http://www.nextconnect.shop",
       },
+      baseURL: "http://www.nextconnect.shop",
       withCredentials: true,
     })
+    .then((res) => {
+      return res;
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+};
+
+export const RegetAccessToken = async (
+  accessToken: string | null,
+  refreshToken: string | undefined
+) => {
+  const url = `http://www.nextconnect.shop/api/auth/reissue`;
+  return await axios
+    .post(
+      url,
+      { refreshToken: refreshToken },
+      {
+        headers: {
+          Authorization: accessToken,
+        },
+        withCredentials: true,
+      }
+    )
     .then((res) => {
       return res;
     })

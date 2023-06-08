@@ -1,10 +1,11 @@
 import React from "react";
 import { InputFormProps } from "../Post.intefact";
 
-export default function InputForm({data,setData, example} : InputFormProps) {
-    const inputhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setData(e.currentTarget.value);
-    };
+export default function InputForm({ data, setData, example }: InputFormProps) {
+  const inputhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData(e.currentTarget.value);
+  };
+  
   return (
     <>
       {data === "" ? (

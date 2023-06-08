@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChangeMonthForm } from "../../hooks/Others";
-import { MainCardProps } from "../home/Main.interface";
+import { MainCardProps } from "./Card.interface";
 
 export default function RecruitmentCard({ card }: MainCardProps) {
   const startDate = ChangeMonthForm(new Date(card.createdAt));

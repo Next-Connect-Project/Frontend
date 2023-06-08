@@ -13,6 +13,7 @@ export default function LikeButton({
 }: LikeButtonProps) {
   const token = useAppSelector((state) => state.login);
 
+  /* 홍보 게시물 추천 API */
   const ClickLikeButton = async (e: React.MouseEvent<HTMLSpanElement>) => {
     e.preventDefault();
     const result_data = await ChangeLikeStatus(id, token.token);

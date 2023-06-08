@@ -1,9 +1,22 @@
-import { Cardprops, PromotionCardprops } from "../card/Card.interface";
-
-export interface MainCardProps {
-  card: Cardprops;
+export interface RecruitCardprops {
+  id: number;
+  category: string;
+  classification: string;
+  memberName: string;
+  title: string;
+  tech: string[];
+  state: string;
+  createdAt: string;
+  deadline: string;
 }
 
-export interface MainPromotionCardProps {
-  card: PromotionCardprops;
+export interface PromotionCardprops {
+  id: number;
+  createdAt: string;
+  name: string;
+  title: string;
+  abstractContent: string;
+  likeCount: number;
+  view: number;
+  likeStatus: boolean;
 }

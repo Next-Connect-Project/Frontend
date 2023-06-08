@@ -16,18 +16,23 @@ export default function ProjectDetailForm() {
   const [created, setCreated] = useState<string | undefined>("");
   const [endDate, setEndDate] = useState<string | undefined>("");
   const { id } = useParams();
+  const navigate = useNavigate();
 
+  /* 모집글 상세조회 API */
   const getData = async (pageId: string | undefined) => {
     const detail = await getRecruitmentData(pageId, token.token);
-    setList(detail);
-    setState(detail.state);
-    if (detail.createdAt) {
-      setCreated(ChangeMonthForm(new Date(detail.createdAt)));
+    if (detail.resultCode === 200) {
+      setList(detail.response);
+      setState(detail.response.state);
+      if (detail.response.createdAt) {
+        setCreated(ChangeMonthForm(new Date(detail.response.createdAt)));
+      }
+      if (detail.response.deadline) {
+        setEndDate(ChangeMonthForm(new Date(detail.response.deadline)));
+      }   
+    } else {
+      navigate('/NotFound');
     }
-    if (detail.deadline) {
-      setEndDate(ChangeMonthForm(new Date(detail.deadline)));
-    }
-    console.log(detail);
   };
 
   useEffect(() => {

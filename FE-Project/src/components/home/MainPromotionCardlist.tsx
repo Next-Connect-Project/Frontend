@@ -5,15 +5,21 @@ import {
   AiOutlineCaretRight,
 } from "react-icons/ai";
 import { getMainPromotionCardData } from "../../hooks/axios/MainCardlist";
-import { Link } from "react-router-dom";
-import { PromotionCardprops } from "../card/Card.interface";
+import { Link, useNavigate } from "react-router-dom";
+import { PromotionCardprops } from "./Main.interface";
 
 export default function MainPromotionCardlist() {
   const [list, setList] = useState<PromotionCardprops[]>([]);
+  const navigate = useNavigate();
 
+  /*모집글 메인 조회 API*/
   const getData = async () => {
     const card = await getMainPromotionCardData();
-    setList(card);
+    if (card.resultCode === 200) {
+      setList(card.response);
+    } else {
+      navigate("/NotFonud");
+    }
   };
 
   useEffect(() => {
@@ -27,7 +33,7 @@ export default function MainPromotionCardlist() {
         홍보중인 프로젝트
       </div>
       <div className="cardlists">
-        {list.map((card:PromotionCardprops) => {
+        {list.map((card: PromotionCardprops) => {
           return <MainPromotionCard card={card} key={card.id} />;
         })}
       </div>

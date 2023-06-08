@@ -4,6 +4,7 @@ import { DeleteModalProps } from "./Modal.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../hooks/redux/store";
 import { DeletePromotionPost } from "../../hooks/axios/Promotion";
+
 export default function PromotionDeleteModal({
   setModalOpen,
   id,
@@ -14,13 +15,14 @@ export default function PromotionDeleteModal({
     setModalOpen(false);
   };
 
+  /* 홍보 글 삭제 API */
   const ClickDeletePost = async () => {
     const result_data = await DeletePromotionPost(id, token.token);
-    console.log(result_data);
     if (result_data.resultCode === 200) {
       navigate("/");
     }
   };
+
   return (
     <div className="modal_outside" onClick={closeModal}>
       <div className="modal_inside" onClick={(e) => e.stopPropagation()}>

@@ -18,6 +18,7 @@ export default function PromotionPost() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [error, setError] = useState<number>(0);
 
+  /* 홍보 글 등록 API */
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (error !== 0) {
@@ -29,16 +30,28 @@ export default function PromotionPost() {
         abstact,
         token.token
       );
-      console.log(submit_result);
       if (submit_result.data.resultCode === 200) {
         navigate("/");
       }
     }
   };
 
+  /* 항목 입력할때 마다 오류 체크 */
   useEffect(() => {
     setError(FindNewPromotionPostError(title, abstact, content));
   }, [title, abstact, content]);
+
+  /* 모달 오픈시 화면 최상단 이동 */
+  useEffect(() => {
+    if (modalOpen) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => {
+        document.body.style.cssText = `position: fixed; `;
+      }, 700);
+    } else {
+      document.body.style.cssText = "";
+    }
+  }, [modalOpen]);
 
   return (
     <>

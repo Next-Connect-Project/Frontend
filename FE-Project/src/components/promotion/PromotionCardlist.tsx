@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import RecruitmentCard from "../card/RecruitmentCard";
 import { RecruitmentCardlistProps } from "./Promotion.interface";
 import Paging from "./Paging";
-import { getPromotionCard } from "../../hooks/axios/Promotion";
 import PromotionCard from "../card/PromotionCard";
-import { PromotionCardprops } from "../card/Card.interface";
+import { PromotionCardprops } from "../home/Main.interface";
+import { getPromotionCards } from "../../hooks/axios/Promotion";
+import { useNavigate } from "react-router-dom";
 
 export default function PromotionCardlist({
   sort,
@@ -12,20 +12,22 @@ export default function PromotionCardlist({
   setPage,
 }: RecruitmentCardlistProps) {
   const [list, setList] = useState<PromotionCardprops[]>([]);
-
-  //페이지네이션을 위한 상태변수
   const [totalcards, setTotalcards] = useState<number>(0);
   const cards = 16;
+  const navigate = useNavigate();
 
+  /*전체 홍보 글 조회 API*/
   const getData = async () => {
-    const card = await getPromotionCard(page, cards, sort);
-    console.log(card);
-    //페이지네이션 페이지 수 계산
-    setTotalcards(card.count);
-    //카드출력
-    setList(card.promotionOverviewDtoList);
+    const card = await getPromotionCards(page, cards, sort);
+    if (card.resultCode === 200) {
+      setTotalcards(card.response.count);
+      setList(card.response.promotionOverviewDtoList);
+    } else {
+      navigate("/Notfound");
+    }
   };
 
+  /* 정렬순서, 페이지 바뀔때 마다 Rerender */
   useEffect(() => {
     getData();
   }, [sort, page]);

@@ -1,5 +1,5 @@
 {
-  "tech" : [
+  "tech": [
     {
       "value": "Language",
       "detail": [
@@ -33,7 +33,7 @@
         { "option": "Django" },
         { "option": "Spring" },
         { "option": "Node_Express" },
-        {"option": "Flask" },
+        { "option": "Flask" },
         { "option": "Ruby_on_Rails" }
       ]
     },

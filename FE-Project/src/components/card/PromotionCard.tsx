@@ -1,8 +1,8 @@
 import React from "react";
 import { RiThumbUpFill } from "react-icons/ri";
-import { MainPromotionCardProps } from "../home/Main.interface";
 import { Link } from "react-router-dom";
 import { GrView } from "react-icons/gr";
+import { MainPromotionCardProps } from "./Card.interface";
 
 export default function PromotionCard({ card }: MainPromotionCardProps) {
   return (

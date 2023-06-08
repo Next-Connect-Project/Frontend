@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getPromotionCard = async (
+export const getPromotionCards = async (
   page: number,
   limit: number,
   sorting: number
@@ -11,7 +11,7 @@ export const getPromotionCard = async (
       params: { page: page, limit: limit, sorting: sorting },
     })
     .then((res) => {
-      return res.data.response;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
@@ -26,7 +26,7 @@ export const getPromotionData = async (
   return await axios
     .get(url, { headers: { Authorization: token } })
     .then((res) => {
-      return res.data.response;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);

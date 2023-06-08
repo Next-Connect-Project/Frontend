@@ -5,7 +5,7 @@ export const getMainCardData = async () => {
   return await axios
     .get(url)
     .then((res) => {
-      return res.data.response.recruitments;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
@@ -17,7 +17,7 @@ export const getMainPromotionCardData = async () => {
   return await axios
     .get(url)
     .then((res) => {
-      return res.data.response;
+      return res.data;
     })
     .catch((e) => {
       console.log(e);
