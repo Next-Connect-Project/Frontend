@@ -50,7 +50,7 @@ export default function MyPostMain() {
           <div className="content"><span>모집 마감:</span> {item.deadline}</div>
           <div className="content"><span>마감 여부:</span> {item.state}</div>
           <div className="content"><span>기술 스택:</span> {item.tech.join(", ")}</div>
-          <Link className="link" to={`/project/${item.id}`}>
+          <Link className="link" to={`/recruit/${item.id}`}>
             <div className="owner_button">상세보기</div>
           </Link>
         </div>

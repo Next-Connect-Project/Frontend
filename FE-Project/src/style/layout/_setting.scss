@@ -1,7 +1,7 @@
 .setting_wrapper {
     padding: 70px 80px 70px 80px;
     width: 100%;
-    height: 100%;
+    min-height: 500px;
 
     .announcement {
         width: 800px;
@@ -17,9 +17,10 @@
 
     .content_wrapper {
         padding: 30px 50px 30px 50px;
-        margin-left: 120px;
-        height: 100%;
+        margin-left: 150px;
         background-color: $color-card-pink;
+        height: 300px;
+        
 
         .content {
             font-weight: 700;
