@@ -29,6 +29,14 @@ export default function SettingMain() {
             설정
             </div>
 
+            <div className="content_wrapper">
+                <div className="content">이메일: </div>
+                <div className="content">이름: </div>
+                <div className="secession_button">회원탈퇴</div>
+            </div>
+
+
+
         </div>
         </>
     )
