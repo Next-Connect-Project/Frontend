@@ -16,7 +16,7 @@ export const getMyRecuritment = async (token: string | null) => {
 
 // 수정 필요
 export const getMyPromotion = async (token: string | null) => {
-  const url = `http://www.nextconnect.shop/api/`;
+  const url = `http://www.nextconnect.shop/api/promotion/my`;
   return await axios
     .get(url, { headers: { Authorization: token } })
     .then((res) => {
