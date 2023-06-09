@@ -14,19 +14,27 @@ export default function RecruitNumber(props: RecruitNumberProps) {
   return (
     <div>
       <div className="checkbox_title">모집 인원</div>
-      <CheckForm
-        options={options}
-        frontNumber={props.frontNumber}
-        setFrontNumber={props.setFrontNumber}
-        backNumber={props.backNumber}
-        setBackNumber={props.setBackNumber}
-        designNumber={props.designNumber}
-        setDesignNumber={props.setDesignNumber}
-        pmNumber={props.pmNumber}
-        setPmNumber={props.setPmNumber}
-        otherNumber={props.otherNumber}
-        setOthernumber={props.setOthernumber}
-      />
+      <div className="checkbox_form">
+        {options.map((data) => {
+          return (
+            <CheckForm
+              key={data.value}
+              option={data.value}
+              name={data.name}
+              frontNumber={props.frontNumber}
+              setFrontNumber={props.setFrontNumber}
+              backNumber={props.backNumber}
+              setBackNumber={props.setBackNumber}
+              designNumber={props.designNumber}
+              setDesignNumber={props.setDesignNumber}
+              pmNumber={props.pmNumber}
+              setPmNumber={props.setPmNumber}
+              otherNumber={props.otherNumber}
+              setOthernumber={props.setOthernumber}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
