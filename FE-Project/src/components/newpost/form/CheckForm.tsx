@@ -1,72 +1,98 @@
 import React, { useState } from "react";
-import { CheckboxOption, CheckBoxProps } from "../Post.intefact";
+import { CheckBoxProps } from "../Post.intefact";
 
 export default function CheckForm(props: CheckBoxProps) {
-  const [checked, setChecked] = useState<boolean[]>([
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [checked, setChecked] = useState<boolean>(true);
 
-  const CheckboxClickHandler = (index: number) => {
-    let copy = [...checked];
-    copy[index] = !copy[index];
-    setChecked(copy);
-  };
-
-  const NumberChangeHandler = (
+  const CheckboxClickHandler = (
     data: string,
-    e: React.ChangeEvent<HTMLInputElement> | any
+    e: React.MouseEvent<HTMLInputElement>
   ) => {
+    setChecked(!checked);
     switch (data) {
       case "FrontEnd":
-        props.setFrontNumber(e.target.value);
+        props.setFrontNumber(0);
         break;
       case "BackEnd":
-        props.setBackNumber(e.target.value);
+        props.setBackNumber(0);
         break;
       case "Design":
-        props.setDesignNumber(e.target.value);
+        props.setDesignNumber(0);
         break;
       case "ProjectManager":
-        props.setPmNumber(e.target.value);
+        props.setPmNumber(0);
         break;
       case "Others":
-        props.setOthernumber(e.target.value);
+        props.setOthernumber(0);
         break;
       default:
         console.log("error");
     }
   };
 
+  const NumberChangeHandler = (
+    data: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    switch (data) {
+      case "FrontEnd":
+        props.setFrontNumber(Number(e.target.value));
+        break;
+      case "BackEnd":
+        props.setBackNumber(Number(e.target.value));
+        break;
+      case "Design":
+        props.setDesignNumber(Number(e.target.value));
+        break;
+      case "ProjectManager":
+        props.setPmNumber(Number(e.target.value));
+        break;
+      case "Others":
+        props.setOthernumber(Number(e.target.value));
+        break;
+      default:
+        console.log("error");
+    }
+  };
+
+  const SetDefaultValue = (data: string) => {
+    switch (data) {
+      case "FrontEnd":
+        return props.frontNumber;
+      case "BackEnd":
+        return props.backNumber;
+      case "Design":
+        return props.designNumber;
+      case "ProjectManager":
+        return props.pmNumber;
+      case "Others":
+        return props.otherNumber;
+      default:
+        console.log("error");
+    }
+  };
+
   return (
-    <div className="checkbox_form">
-      {props.options.map((data: CheckboxOption, index: number) => {
-        return (
-          <div className="option_form" key={data.value}>
-            <input
-              type="checkbox"
-              id={data.value}
-              className="option_checkbox"
-              onClick={(e) => CheckboxClickHandler(index)}
-            />
-            <label htmlFor={data.value} className="option_label">
-              {data.name}
-            </label>
-            <input
-              className="option_number_input"
-              type="number"
-              step="1"
-              min="1"
-              max="100"
-              disabled={!checked[index]}
-              onChange={(e) => NumberChangeHandler(data.value, e)}
-            />
-          </div>
-        );
-      })}
+    <div className="option_form">
+      <input
+        type="checkbox"
+        className="option_checkbox"
+        onClick={(e) => CheckboxClickHandler(props.option, e)}
+        checked={checked}
+      />
+      <label htmlFor={props.option} className="option_label">
+        {props.name}
+      </label>
+      <input
+        className="option_number_input"
+        type="number"
+        step="1"
+        min="0"
+        max="100"
+        value={SetDefaultValue(props.option)}
+        disabled={!checked}
+        onChange={(e) => NumberChangeHandler(props.option, e)}
+      />
     </div>
   );
 }

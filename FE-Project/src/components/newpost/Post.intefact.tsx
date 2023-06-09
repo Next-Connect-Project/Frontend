@@ -92,7 +92,8 @@ export interface MultiSelectBoxProps {
 }
 
 export interface CheckBoxProps {
-  options: CheckboxOption[];
+  option: string;
+  name: string;
   frontNumber: number;
   setFrontNumber: React.Dispatch<React.SetStateAction<number>>;
   backNumber: number;
@@ -104,10 +105,7 @@ export interface CheckBoxProps {
   otherNumber: number;
   setOthernumber: React.Dispatch<React.SetStateAction<number>>;
 }
-export interface CheckboxOption {
-  value: string;
-  name: string;
-}
+
 export interface CalendarProps {
   data: Date | undefined;
   setData: React.Dispatch<React.SetStateAction<Date | undefined>>;
