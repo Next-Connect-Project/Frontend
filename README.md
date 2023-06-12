@@ -52,57 +52,16 @@
 
 ## ⚒️ 프로젝트 주요 기능
 <details>
-<summary> 회원가입</summary>
+<summary> 회원가입 & 소셜 로그인</summary>
 <div markdown="1">
 <ul>
-<li>이메일 중복 확인을 통해 유효한 이메일 주소가 있으면 회원 가입이 가능 </li>
-<li>인증 코드 메일을 발송</li>
-<li>인증 코드 만료 시간은 3분으로 redis를 통해 관리</li>
-<li>회원가입 버튼 클릭 시 인증 코드 검사를 진행하며 정상 통과 시 회원가입이 진행</li>
-</ul>
-</div>
-</details>
-<details>
-<summary> 로그인</summary>
-<div markdown="1">
-<ul>
-<li>일반 로그인과 SNS 로그인은 JWT 토큰을 기반으로 관리</li>
-<li>일반 로그인 : 로그인 성공 시 Access, Refresh Token을 발급하여 로그인 성공을 응답 (Refresh Token의 경우 Redis 를 이용하여 토큰 관리)</li>
-<li>OAuth 로그인 : 네이버, 깃허브 계정을 통해 로그인
+<li>소셜 로그인은 JWT 인증 방식으로 구현</li>
+<li>OAuth 로그인 : 네이버 계정을 통해 로그인
 <ul>
 <li>Front 에서 Authorization code 발급받아 Server 로 전달</li>
-<li>Authorization code 를 받아 Access Token 및 유저 정보를 요청</li>
-<li>응답받은 유저 정보로 Database 를 검색하여 회원 정보 생성 및 수정</li>
+<li>Back 에서 Authorization code 를 받아 네이버 서버로부터 Access Token 및 유저 정보를 요청</li>
+<li>응답받은 유저 정보로 Database 를 검색하여 회원 정보 생성</li>
 <li>로그인 성공 시 Access, Refresh Token을 발급하여 응답</li>
-</ul>
-</li>
-</ul>
-</div>
-</details>
-<details>
-<summary>회원탈퇴</summary>
-<div markdown="1">
-<ul>
-<li>회원정보 수정
-<ul>
-<li>닉네임, 주소, 연락처, 프로필 이미지 변경 가능</li>
-<li>일반 로그인 사용자와 OAuth 로그인 사용자는 동일한 항목에 대해 정보 변경 가능</li>
-<li>OAuth 로그인 사용자는 해당 사이트 계정에서 이름, 프로필이 변경된 경우 자동 적용</li>
-</ul>
-</li>
-<li>회원탈퇴
-<ul>
-<li>사용자는 회원탈퇴 버튼을 통해 안내사항을 확인 후 탈퇴가능</li>
-<li>탈퇴 시 Database 에 등록된 사용자 관련 정보는 모두 삭제</li>
-<li>탈퇴 후 사용자는 해당 계정으로 다시 로그인 불가능</li>
-</ul>
-</li>
-</li>
-<li>비밀번호 분실 시 비밀번호 변경
-<ul>
-<li>일반 로그인으로 회원가입한 유저의 경우 비밀번호 분실 시 비밀번호를 변경 가능</li>
-<li>가입했던 이메일로 발송된 인증코드를 통해 가입한 계정에 대한 인증을 받고, 변경하고자 하는 비밀번호를 입력하여 비밀번호를 변경</li>
-<li>Oauth 로그인 사용자는 이용 불가능</li>
 </ul>
 </li>
 </ul>
