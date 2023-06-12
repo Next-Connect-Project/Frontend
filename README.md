@@ -67,62 +67,42 @@
 </ul>
 </div>
 </details>
+
 <details>
-<summary> 친구찾기 & 추가</summary>
+<summary> 메인 홈</summary>
 <div markdown="1">
 <ul>
-<li>email, name, nickname 타입을 기반으로 회원가입된 전체 유저 목록을 검색</li>
-<li>검색 전 인기 유저 추천</li>
-<li>검색 후 기준에 맞는 검색 결과가 있으면 검색 결과
+<li>메인 캐러셀
+<li>마감일이 가장 임박한 모집글 4개 보여줌</li>
+<li>가장 최근에 작성된 홍보글 4개 보여줌</li>
 <ul>
-<li>이미 친구인 경우 친구 삭제 버튼</li>
-<li>친구가 아닌 경우 친구 추가 버튼</li>
-</ul>
-</li>
-</li>
-<li>검색 결과가 없으면 “검색 결과가 없습니다.” 텍스트 띄움</li>
-<li>친구 기능은 단방향으로 추가 가능, 별도의 수락 없음
-<ul>
-<li>일반 로그인으로 회원가입한 유저의 경우 비밀번호 분실 시 비밀번호를 변경 가능</li>
-</ul>
-</li>
-</ul>
 </div>
 </details>
 <details>
-<summary> 친구목록</summary>
+    
+<summary> 모집공고 게시판 </summary>
 <div markdown="1">
 <ul>
-<li>Access Token을 기반으로 로그인한 유저를 판단하여 해당 유저의 친구 목록을 조회</li>
-<li>친구 리스트 hover 시에 삭제 버튼 노출</li>
-<li>삭제 버튼 이외 영역 클릭 시 친구의 펀딩 내역, 찜 목록 확인 가능</li>
-<li>비로그인 상태에서 클릭하면 로그인 페이지로 연결</li>
-</ul>
-</div>
-</details>
-<details>
-<summary> 상품</summary>
-<div markdown="1">
-<ul>
-<li>상품 조회 기능
-<ul>
-<li>카테고리별(의류, 가전제품, 완구, 전자기기, 장신구, 가구, 기타 ) 상품 조회가 가능</li>
-<li>매일 바뀌는 오늘의 베스트 상품을 메인 페이지에서 확인 가능</li>
-</ul>
-</li>
-<li>상품 추가 기능
-<ul>
-<li>(관리자 페이지) 에서 상품 데이터를 추가</li>
-</ul>
-</li>
-<li>기타
-<ul>
-<li>베스트 상품 데이터는 매일 새벽 2시에 상품의 추천수를 기준으로 업데이트</li>
-</ul>
-</li>
-<li>상품검색
-<ul>
-<li>Parameter로 전달된 Keyword로 상품을 검색</li>
+    <li>상품 조회 기능
+        <ul>
+            <li>카테고리별(의류, 가전제품, 완구, 전자기기, 장신구, 가구, 기타 ) 상품 조회가 가능</li>
+            <li>매일 바뀌는 오늘의 베스트 상품을 메인 페이지에서 확인 가능</li>
+        </ul>
+    </li>
+    
+    <li>상품 추가 기능
+        <ul>
+            <li>(관리자 페이지) 에서 상품 데이터를 추가</li>
+        </ul>
+    </li>
+    <li>기타
+        <ul>
+            <li>베스트 상품 데이터는 매일 새벽 2시에 상품의 추천수를 기준으로 업데이트</li>
+        </ul>
+    </li>
+    <li>상품검색
+        <ul>
+            <li>Parameter로 전달된 Keyword로 상품을 검색</li>
 <li>페이징처리로 한번에 전달되는 상품개수를 제한</li>
 </ul>
 </li>
@@ -141,8 +121,9 @@
 </ul>
 </div>
 </details>
+    
 <details>
-<summary> 찜목록</summary>
+<summary> 홍보글 게시판</summary>
 <div markdown="1">
 <ul>
 <li>찜목록 추가
@@ -164,46 +145,7 @@
 </ul>
 </div>
 </details>
-<details>
-<summary> 펀딩</summary>
-<div markdown="1">
-<ul>
-<li>펀딩 시작
-<ul>
-<li>사용자는 원하는 상품, 펀딩 기간, 금액, 펀딩을 받을 대상자를 선택해 펀딩을 시작</li>
-<li>사용자는 다른 유저들이 진행중인 펀딩에 추가로 참여</li>
-</ul>
-</li>
-<li>펀딩 조회
-<ul>
-<li>사용자는 본인이 참여한(시작한) 펀딩목록을 조회</li>
-<li>사용자는 본인이 대상자인 펀딩목록을 조회</li>
-<li>친구가 참여한 펀딩목록을 조회</li>
-<li>메인 페이지에서 인기유저(인플루언서) 유저를 대상으로 진행중인 펀딩들을 조회</li>
-</ul>
-</li>
-<li>펀딩 상세정보 조회
-<ul>
-<li>펀딩에 참여한 사람들의 수, 유저, 내가 펀딩한 금액, 남은 금액 등 상세정보를 조회</li>
-</ul>
-</li>
-<li>펀딩이 완료된 대상자는 주소와 후기(코멘트)를 남겨 펀딩상품 수령</li>
-</ul>
-</div>
-</details>
-<details>
-<summary> 포인트</summary>
-<div markdown="1">
-<ul>
-<li>포인트 충전
-<ul>
-<li>Access Token으로 전달된 UserId로 본인의 포인트를 10000증가</li>
-</ul>
-</ul>
-</div>
-</details>
-
-
+    
 </br>
 
 ## ⚙️ Architecture
