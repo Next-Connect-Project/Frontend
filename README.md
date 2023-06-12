@@ -175,11 +175,11 @@
 |모집게시판|홍보게시판|
 |<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/7b2f6a88-9dda-496d-bea5-29a5a6dd2718"/>|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/33c09d9f-70f3-4ea5-a4e0-5d67b1d7f308"/>|
 |모집글 작성|모집글 수정,삭제|
-|<img src ="https://user-images.githubusercontent.com/111720709/224335787-d9ff230d-dd66-4d09-838d-5feaef37d5fd.gif" width="100%" height="200"/>|<img src ="https://user-images.githubusercontent.com/111720709/224335804-e45be96a-e575-41c2-bc22-aeeab5fd4620.gif" width="100%" height="200"/>|
+|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/6023eee4-dc57-4829-815f-743a856e453f"/>|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/bd38b5bc-3199-45ef-8fc0-0ddd3afea1a3"/>|
 |홍보글 작성|홍보글 수정,삭제|
-|<img src ="https://user-images.githubusercontent.com/111720709/224335947-f2aece9e-b356-4534-8cd4-4dd280f913ce.gif" width="100%" height="200"/>|<img src ="https://user-images.githubusercontent.com/111720709/224335958-7ed7a245-f8d2-4b08-b86b-eb8ee26c1afe.gif" width="100%" height="200"/>|
-|Profile|Gift|
-|<img src ="https://user-images.githubusercontent.com/111720709/224336125-fcaa770a-b23d-462f-b0e8-37bfeeed67d4.gif" width="100%" height="200"/>|<img src ="https://user-images.githubusercontent.com/111720709/224336116-7ba29de9-b1d7-43c6-8ad6-fde5df684599.gif" width="100%" height="200"/>|
+|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/7f9f153c-ac73-45fe-8d93-920d941f2887"/>|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/d4ec5e05-415a-4e91-91b9-5a114ee6c383"/>|
+|마감여부 수정|메인화면|
+|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/cba8ca7d-4f66-4cc7-bd84-b5aba044275c"/>|<img src ="https://github.com/Next-Connect-Project/Frontend/assets/70136320/085fcf7b-b8d8-4f52-aa46-4b8145a48f0e"/>|
 
 </br>
 
