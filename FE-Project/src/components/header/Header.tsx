@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SortingParameter } from "../../hooks/Others";
-import { RequestNaverLogin, RegetAccessToken } from "../../hooks/axios/Login";
+import { RequestNaverLogin, RegetAccessToken, RequestLogout } from "../../hooks/axios/Login";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux/store";
 import { setToken } from "../../hooks/redux/LoginSlice";
 import { setExpire } from "../../hooks/redux/ExpireSlice";
-import { getCookie, setCookie } from "../../hooks/Cookie";
+import { getCookie, removeCookie, setCookie } from "../../hooks/Cookie";
 import LoginButton from "./LoginButton";
 import NewPostButton from "./NewPostButton";
 
@@ -54,23 +54,36 @@ export default function Header() {
     let now = new Date();
     if (accessTokenExpired !== null && token !== null) {
       let ExpireDate = new Date(accessTokenExpired);
-      console.log(ExpireDate);
-      if (now < ExpireDate) {
-        try {
+      if (now > ExpireDate) {
           /* 배포X 버전  - 배포 할 시 아래 주석 추가 */
           const refreshToken =getCookie('refreshToken')
           const reissue = await RegetAccessToken(token,refreshToken);
           /* 배포 버전  - 배포 안할 시 아래 주석 제거 */
           // const reissue = await RequestAccessToken(token);
-          console.log(reissue);
+        if (reissue?.data.resultCode === 200) {
           if (reissue?.data.response.accessToken) {
             let accessExp = new Date(reissue.data.response.accessExp);
+            let refreshExp = new Date(reissue.data.response.refreshExp);
             let real_accessToken = `Bearer ${reissue.data.response.accessToken}`;
             dispatch(setToken(real_accessToken));
             dispatch(setExpire(accessExp));
+
+            /* 배포X 버전  - 배포 할 시 아래 쿠키 제거 삭제 */
+            setCookie("refreshToken", reissue.data.response.refreshToken, {
+              path: "/",
+              expires: refreshExp,
+              httpOnly: false,
+            });
           }
-        } catch {
-          console.log("Reissue error");
+        } else {
+          const logout_result = await RequestLogout();
+          if (logout_result.resultCode === 200) {
+            dispatch(setToken(null));
+            dispatch(setExpire(null));
+            /* 배포X 버전  - 배포 할 시 아래 쿠키 제거 삭제 */
+            removeCookie("refreshToken");
+            navigate("/");
+          }
         }
       }
     }

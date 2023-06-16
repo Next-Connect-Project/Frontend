@@ -49,10 +49,11 @@ export const RegetAccessToken = async (
       }
     )
     .then((res) => {
+      console.log(res);
       return res;
     })
     .catch((e) => {
-      console.log(e);
+      return e;
     });
 };
 
